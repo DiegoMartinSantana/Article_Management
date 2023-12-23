@@ -249,6 +249,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="AccessBd\AccessBd.csproj">
+      <Project>{a93de200-852f-4f5d-abd6-3f9088c29bf9}</Project>
+      <Name>AccessBd</Name>
+    </ProjectReference>
+    <ProjectReference Include="Domain\Domain.csproj">
+      <Project>{0bce15b7-e435-46b9-a372-ceef09284626}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
