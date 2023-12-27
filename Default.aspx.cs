@@ -22,6 +22,7 @@ namespace SalesSystem
                 list = access.listArticle();
                 Session.Add("listarticle", list);
             }
+
         }
 
         protected void txtsearch_TextChanged(object sender, EventArgs e)
@@ -35,9 +36,10 @@ namespace SalesSystem
 
         protected void ddlby_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
             ddlcritery.Items.Clear();
 
-            if (ddlby.SelectedItem.ToString() == "Price ")
+            if (ddlby.SelectedItem.ToString() == "Price")
             {
                 ddlcritery.Items.Add("Less than : ");
                 ddlcritery.Items.Add("Equals to : ");
@@ -50,9 +52,35 @@ namespace SalesSystem
                 ddlcritery.Items.Add("Ends with : ");
                 ddlcritery.Items.Add("Contains  : ");
 
+            }
+            
+        }
+
+        protected void btnsearchAdvanced_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArticleAccess access = new ArticleAccess();
+                list = access.filter(ddlby.SelectedItem.ToString(), ddlcritery.SelectedItem.ToString(), txtsearch.Text);
+
 
             }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+          
+
+
+        }
+
+        protected void chkAdvfilter_CheckedChanged(object sender, EventArgs e)
+        {
+            txtsearch.Enabled = !chkAdvfilter.Checked;
+         
+            ArticleAccess access = new ArticleAccess();
+            list = access.listArticle();
         }
     }
 }

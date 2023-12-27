@@ -4,16 +4,16 @@
     <style>
     
   </style>
+
     <main>
 
-
-
         <div class="row mb-3">
+
             <div class="col">
 
                 <div class="md-3 form-control-lg">
 
-                    <asp:Label runat="server"> Search Article by Name or Description :  </asp:Label>
+                    <asp:Label runat="server" ID="lblfilter"> Search Article by Name or Description :  </asp:Label>
 
 
                 </div>
@@ -22,39 +22,73 @@
 
                 </div>
 
+
             </div>
+
         </div>
+
         <asp:UpdatePanel runat="server">
-            <ContentTemplate> 
-        <div class="row mb-3">
-            <div class="col " style="max-width: 25%">
-                <div class=" form-control-lg ">
-                    <asp:Label Text="Search by :" runat="server" />
-                </div>
-                <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
-                    <asp:DropDownList runat="server" AutoPostBack="true" CssClass="dropdown-item" Style="font-size: larger" ID="ddlby" OnSelectedIndexChanged="ddlby_SelectedIndexChanged">
-                        <asp:ListItem Text="Marca" />
-                        <asp:ListItem Text="Categoria" />
-                        <asp:ListItem Text="Precio" />
+            <ContentTemplate>
+                <div class="col">
+                    <div class="mb-3">
+                        <asp:CheckBox Text="Show Advanced Filter" CssClass="form-check" OnCheckedChanged="chkAdvfilter_CheckedChanged" ID="chkAdvfilter" AutoPostBack="true" runat="server" />
 
-                    </asp:DropDownList>
+                    </div>
                 </div>
-            </div>
-            <div class="col " style="max-width: 25%">
-                <div class=" form-control-lg ">
-                    <asp:Label Text="Critery :" runat="server" />
-                </div>
-                <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
-                    <asp:DropDownList runat="server" CssClass="dropdown-item" Style="font-size: larger" ID="ddlcritery">
-                        
 
-                    </asp:DropDownList>
+
+                <%if (chkAdvfilter.Checked)
+                    {
+                %>
+                <div class="row mb-3">
+                    <div class="col " style="max-width: 25%">
+                        <div class=" form-control-lg ">
+                            <asp:Label Text="Search by :" runat="server" />
+                        </div>
+                        <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
+                            <asp:DropDownList runat="server" AutoPostBack="true" CssClass="dropdown-item" Style="font-size: larger" ID="ddlby" OnSelectedIndexChanged="ddlby_SelectedIndexChanged">
+                                <asp:ListItem Text="Brand" />
+                                <asp:ListItem Text="Category" />
+                                <asp:ListItem Text="Price" />
+
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="col " style="max-width: 25%">
+                        <div class=" form-control-lg ">
+                            <asp:Label Text="Critery :" runat="server" />
+                        </div>
+                        <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
+                            <asp:DropDownList runat="server" CssClass="dropdown-item" Style="font-size: larger" ID="ddlcritery">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="col " style="max-width: 25%">
+                        <div class=" form-control-lg ">
+                            <asp:Label Text="Filter :" runat="server" />
+                        </div>
+
+                        <div class="md-3">
+                            <asp:TextBox runat="server" Style="margin-left: 15px" ID="txtFilterAdvanced" CssClass="form-control" />
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col " style="max-width: 25%">
+                        <div class="md-3 form-control-lg">
+                        </div>
+                        <div class="mb-3" style="margin-left: 80px">
+                            <asp:Button Text="Search" runat="server" Autopostback="true" CssClass="btn btn-primary" ID="btnsearchAdvanced" OnClick="btnsearchAdvanced_Click" Style="font-size: larger" />
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-                  </ContentTemplate>
+
+                <%} %>
+            </ContentTemplate>
         </asp:UpdatePanel>
-
 
 
         <div class="row mb-3 row-cols-1 text-lg-center " style="margin-left: 15px">
@@ -75,7 +109,6 @@
             <%}
                 }%>
         </div>
-
     </main>
 
 </asp:Content>
