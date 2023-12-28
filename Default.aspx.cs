@@ -24,7 +24,14 @@ namespace SalesSystem
             }
 
         }
+        
+        protected void chkfilter_CheckedChanged(object sender, EventArgs e)
+        {
+            txtsearch.Enabled = !chkfilter.Checked;
 
+            ArticleAccess access = new ArticleAccess();
+            list = access.listArticle();
+        }
         protected void txtsearch_TextChanged(object sender, EventArgs e)
         {
              list = (List <Article>)Session["listarticle"];
@@ -50,7 +57,7 @@ namespace SalesSystem
             {
                 ddlcritery.Items.Add("Starts with : ");
                 ddlcritery.Items.Add("Ends with : ");
-                ddlcritery.Items.Add("Contains  : ");
+                ddlcritery.Items.Add("Contains : ");
 
             }
             
@@ -61,7 +68,7 @@ namespace SalesSystem
             try
             {
                 ArticleAccess access = new ArticleAccess();
-                list = access.filter(ddlby.SelectedItem.ToString(), ddlcritery.SelectedItem.ToString(), txtsearch.Text);
+                list = access.filter(ddlby.SelectedItem.ToString(), ddlcritery.SelectedItem.ToString(), txtFilterAdvanced.Text);
 
 
             }
@@ -70,17 +77,10 @@ namespace SalesSystem
 
                 throw ex;
             }
-          
+
 
 
         }
 
-        protected void chkAdvfilter_CheckedChanged(object sender, EventArgs e)
-        {
-            txtsearch.Enabled = !chkAdvfilter.Checked;
-         
-            ArticleAccess access = new ArticleAccess();
-            list = access.listArticle();
-        }
     }
 }

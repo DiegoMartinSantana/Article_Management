@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection.Emit;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AccessBd
@@ -70,7 +71,7 @@ namespace AccessBd
 
             try
             {
-                string query = "Select  A.Id Idar, A.Codigo, Nombre, A.Descripcion ArtDesc, IdMarca  ,IdCategoria , ImagenURL ,Precio, C.Descripcion Catdesc , M.Descripcion Marcadesc From ARTICULOS A , CATEGORIAS C , MARCAS M Where A.IdMarca = M.Id and C.Id = IdCategoria and ";
+                string query = "select A.Id Idart, A.Codigo, Nombre, A.Descripcion artDesc, IdMarca, IdCategoria, ImagenURL ,Precio,C.Descripcion catDesc ,M.Descripcion marcaDesc From ARTICULOS A, MARCAS M, CATEGORIAS C where A.idMarca = M.id and C.Id = A.IdCategoria and ";
               
                 if (by == "Price")
                 {
@@ -97,15 +98,15 @@ namespace AccessBd
                     switch (critery)
                     {
                         case "Starts with : ":
-                            query += "Marcadesc like '" + filter + "%'"; 
+                            query += "M.Descripcion like '"+ filter +"%' "; 
 
                             break;
-                        case "Ends with :  ":
-                            query += "Marcadesc like '%" + filter + "'";
+                        case "Ends with : ":
+                            query += "M.Descripcion like '%"+ filter + "'";
 
                             break;
-                        case "Contains  :  ":
-                            query += "Marcadesc like '%" + filter + "%'";
+                        case "Contains : ":
+                            query += "M.Descripcion like '%"+ filter + "%'";
 
 
                             break;
@@ -117,15 +118,15 @@ namespace AccessBd
                     switch (critery)
                     {
                         case "Starts with : ":
-                            query += "Catdesc like '" + filter + "%'";
+                            query += "C.Descripcion like '" + filter + "%'";
 
                             break;
-                        case "Ends with :  ":
-                            query += "Catdesc like '%"+filter +"'";
+                        case "Ends with : ":
+                            query += "C.Descripcion like '%" + filter +"'";
 
                             break;
-                        case "Contains  :  ":
-                            query += "Catdesc like '%"+filter +"%'";
+                        case "Contains : ":
+                            query += "C.Descripcion like '%" + filter +"%'";
 
                             break;
 
@@ -139,25 +140,27 @@ namespace AccessBd
                 {
                 Article a = new Article();
 
-                    a.Id = (int)access.reader["Idar"];
+
+                    a.Id = (int)access.reader["Idart"];
                     a.Name = (string)access.reader["Nombre"];
                     a.Price = (decimal)access.reader["Precio"];
 
                     a.category = new Category();
                     a.brand = new Brand();
                     a.brand.Id = (int)access.reader["IdMarca"];
-                    a.brand.Description = (string)access.reader["Marcadesc"];
+                    a.brand.Description = (string)access.reader["marcaDesc"];
 
                     a.category.Id = (int)access.reader["IdCategoria"];
 
-                    a.category.Description = (string)access.reader["CatDesc"];
+                    a.category.Description = (string)access.reader["catDesc"];
 
                     a.CodArticle = (string)access.reader["Codigo"];
-                    a.Description = (string)access.reader["ArtDesc"];
+                    a.Description = (string)access.reader["artDesc"];
                     if (!(access.reader["ImagenURL"] is DBNull))
                     {
                         a.UrlImg = (string)access.reader["ImagenURL"];
                     }
+
                     list.Add(a);
                 }
                 return list;
