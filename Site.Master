@@ -76,8 +76,8 @@
 
              <li class="nav-item">
 
-
-                 <a href="Perfil.aspx" class="btn btn-outline-primary me-2">Mi Perfil</a>
+                 <a href="Login.aspx" class="btn btn-outline-dark me-2" > Login </a> 
+                     <!-- <a href="Perfil.aspx" class="btn btn-outline-primary me-2">Mi Perfil</a> -->
              </li>
              <li class="nav-item">
 

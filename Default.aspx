@@ -111,7 +111,7 @@
                     <p class="card-text"><%:Art.Description %>.</p>
                     <p class="card-text"><%:Art.Price %> $</p>
 
-                    <a href="detailArticle.aspx?<%: Art.Id %>" class="btn btn-primary">Go to Article </a>
+                    <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn btn-primary">Go to Article </a>
                 </div>
             </div>
             <%}

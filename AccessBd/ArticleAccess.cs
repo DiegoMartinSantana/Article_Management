@@ -13,14 +13,19 @@ namespace AccessBd
 {
     public class ArticleAccess
     {
-        public List<Article> listArticle()
+        public List<Article> listArticle(string id="")
         {
             BdAccess data = new BdAccess();
             List<Article> list = new List<Article>();
             //I bring everything and then I use what I want
             try
-            {
-                data.setConsultation("select  A.Codigo, Nombre, A.Descripcion artDesc, M.Descripcion DescMarca,C.Descripcion Catdesc,ImagenUrl,Precio , A.Id Idart, IdCategoria,IdMarca from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id=A.IdMarca and C.Id= A.IdCategoria");
+            {   string querylist=" select  A.Codigo, Nombre, A.Descripcion artDesc, M.Descripcion DescMarca,C.Descripcion Catdesc,ImagenUrl,Precio , A.Id Idart, IdCategoria,IdMarca from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id=A.IdMarca and C.Id= A.IdCategoria";
+                if (id != "")
+                {
+                    querylist += " and A.id = " + id;
+                }
+                data.setConsultation(querylist);
+
                 data.executeRead();
 
                 while (data.reader.Read())

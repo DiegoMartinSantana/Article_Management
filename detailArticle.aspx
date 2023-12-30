@@ -4,7 +4,7 @@
 
 
 
-    <div class="row">
+    <div class="row" style="font-size:large">
         <div class="col form-control" >
             <div class="mb-3  ">
                 <asp:Label Text="Id : " class="form-control-lg" runat="server" />
