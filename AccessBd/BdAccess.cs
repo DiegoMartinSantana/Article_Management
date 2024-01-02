@@ -71,7 +71,24 @@ namespace Access
         {
             Command.Parameters.AddWithValue(name, value);
         }
+        public int executeScalar()
+        {
+            Command.Connection = Connection;
+            try
+            {
+                Connection.Open();
+                return int.Parse(Command.ExecuteScalar().ToString());
 
+            }
+            catch (Exception ex )
+            {
+
+                throw ex;
+            }finally
+            {
+                close();
+            }
+        }
         public void close()
         {
 

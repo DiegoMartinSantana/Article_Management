@@ -1,18 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SalesSystem.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+   <div class="row justify-content-center" style="font-size:large"> 
+        <div class="col-md-6">
+            <div class="card" style="margin-top:5%">
+                <div class="card-header">
+                    <h4>Login</h4>
+                </div>
+                <div class="card-body">
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Email : </label>
+                            <asp:TextBox  type="email" class="form-control" id="txtEmail"  placeholder="Enter your Email : " required="true" runat="server" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPassword" class="form-label">Password :</label>
+                            <asp:TextBox type="password" class="form-control" id="txtPass" placeholder="Enter your Password" required="true" runat="server"/>
 
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    <asp:Button Text="Submit" runat="server" class="btn btn-primary" OnClick="btnSubmit_Click" ID="btnSubmit"/>
+                </div>
+                </div>
+                </div>
+            </div>
+
 </asp:Content>

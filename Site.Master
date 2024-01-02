@@ -4,7 +4,7 @@
 
 <html lang="es">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
@@ -13,7 +13,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -39,60 +39,79 @@
         </asp:ScriptManager>
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" style="font-size: larger">
-     <div class="container-fluid">
-         <a class="navbar-brand" style="font-size: large" href="#">Navbar</a>
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                 <li class="nav-item">
-                     <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link" href="#">Link</a>
-                 </li>
-                 <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown
-                     </a>
-                     <ul class="dropdown-menu">
-                         <li><a class="dropdown-item" href="#">Action</a></li>
-                         <li><a class="dropdown-item" href="#">Another action</a></li>
-                         <li>
-                             <hr class="dropdown-divider">
-                         </li>
-                         <li><a class="dropdown-item" href="#">Something else here</a></li>
-                     </ul>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                 </li>
-             </ul>
-         </div>
-     </div>
-     <div class="container-fluid">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="font-size: large" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container-fluid">
 
-         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-             <li class="nav-item">
+                    <li class="nav-item">
+                        <% if (Session["user"]!=null)
+                            {
+                                //redirect to "profile"
+                                %>
+                       <a href="Register.aspx" class="btn btn-outline-primary me-2">My Profile</a> 
 
-                 <a href="Login.aspx" class="btn btn-outline-dark me-2" > Login </a> 
-                     <!-- <a href="Perfil.aspx" class="btn btn-outline-primary me-2">Mi Perfil</a> -->
-             </li>
-             <li class="nav-item">
+                        <%}
+                            else
+                            {  %>
+                        <a href="Login.aspx" class="btn btn-outline-info me-2">Login </a>
 
-                 <asp:Button Text="Logout" ID="btnlogout" runat="server" CssClass="btn btn-outline-danger" />
-             </li>
+                        <% } %>
+                    </li>
+                    <li class="nav-item">
+                        <% if (Session["user"]!=null)
+                            {
+                        %>
+                        <asp:Button Text="Logout" ID="btnlogout" runat="server" OnClick="btnlogout_Click" CssClass="btn btn-outline-danger" />
 
-         </ul>
+                        <%}
+                            else
+                            {  %>
+                       <a href="Register.aspx" class="btn btn-outline-secondary me-2">Register </a>
 
-     </div>
-             
- </nav>
+
+                        <% } %>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            
+
         </div>
     </form>
     <asp:PlaceHolder runat="server">

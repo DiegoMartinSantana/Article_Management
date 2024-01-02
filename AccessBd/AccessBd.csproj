@@ -43,7 +43,10 @@
   <ItemGroup>
     <Compile Include="ArticleAccess.cs" />
     <Compile Include="BdAccess.cs" />
+    <Compile Include="brandAccess.cs" />
+    <Compile Include="categoryAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
