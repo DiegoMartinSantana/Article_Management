@@ -102,7 +102,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -124,6 +123,7 @@
     <Content Include="Default.aspx" />
     <Content Include="detailArticle.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Favorites.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="Management.aspx" />
@@ -191,13 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -219,6 +212,13 @@
     </Compile>
     <Compile Include="detailArticle.aspx.designer.cs">
       <DependentUpon>detailArticle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Favorites.aspx.cs">
+      <DependentUpon>Favorites.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favorites.aspx.designer.cs">
+      <DependentUpon>Favorites.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -282,6 +282,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{311e01fb-f764-4c81-a04f-70ab79031f8e}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
     <ProjectReference Include="AccessBd\AccessBd.csproj">
       <Project>{a93de200-852f-4f5d-abd6-3f9088c29bf9}</Project>
       <Name>AccessBd</Name>

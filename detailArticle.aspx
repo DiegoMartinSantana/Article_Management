@@ -5,13 +5,24 @@
 
 
     <div class="row" style="font-size: large">
+
+        <%if (showChanges)
+            {
+        %>
+        <div class="mb-3" style="border: solid; border-color: darkred">
+            <h3>Edit you Article : </h3>
+        </div>
+        <%} %>
+
         <div class="col form-control">
+
+
             <div class="mb-3  ">
-                <asp:Label Text="Id : " class="form-control-lg" runat="server" />
+                <asp:Label Text="Cod Article : " class="form-control-lg" runat="server" />
 
             </div>
             <div class="mb-3  ">
-                <asp:TextBox runat="server" class="form-control" ID="txtId" />
+                <asp:TextBox runat="server" class="form-control" ID="txtCodArticle" />
             </div>
             <div class="mb-3  form-control-lg">
                 <asp:Label Text="Name : " runat="server" />
@@ -27,7 +38,7 @@
             <div class="mb-3">
                 <asp:TextBox runat="server" ID="txtDescription" class="form-control" />
             </div>
-            <%if (!show)
+            <%if (!show && !showChanges)
                 {
             %>
             <div class="mb-3  ">
@@ -53,6 +64,7 @@
                 <asp:Label Text="Category : " runat="server" class="form-control-lg" />
 
             </div>
+
             <div class="mb-3">
                 <asp:DropDownList runat="server" ID="ddlCategories">
                 </asp:DropDownList>
@@ -94,11 +106,46 @@
                 <asp:Image runat="server" ID="img300px" CssClass="img-fluid mb-3" Style="height: 300PX;" />
 
             </div>
-            <%} %>
+            <%}%>
         </div>
 
     </div>
+    <div class="row">
+        <%if (show)
+            {
 
+        %>
+        <div class="col">
+            <div class="mb-3">
+                <asp:Button Text="Save Article" ID="btnsaveArticle" OnClick="btnsaveArticle_Click" CssClass="btn btn-primary" runat="server" />
+            </div>
+        </div>
+        <%}
+            else
+            {
+        %>
+        <div class="col">
+            <%if (!showChanges)
+                {
+            %>
+            <div class="mb-3">
+                <asp:Button Text="Modified Article " CssClass="btn btn-secondary" ID="btnEdit" OnClick="btnEdit_Click" runat="server" />
+            </div>
+            <%}
+                else
+                {  %>
+            <div class="mb-3">
+                <asp:Button Text="Save Changes " CssClass="btn btn-primary" ID="btnSaveChanges" OnClick="btnSaveChanges_Click" runat="server" />
+            </div>
+            <%} %>
+            </div>
+            <div class="col"> 
+            <div class="mb-3">
+                <asp:Button Text="Delete Article" CssClass="btn btn-danger" ID="btnDelete" OnClick="btnDelete_Click" runat="server" />
+            </div>
+        </div>
+        <%} %>
+    </div>
 
 
 </asp:Content>

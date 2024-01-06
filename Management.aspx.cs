@@ -15,6 +15,8 @@ namespace SalesSystem
             ArticleAccess access = new ArticleAccess();
             if (!IsPostBack)
             {
+                
+
                 dvgArticles.DataSource = access.listArticle();
                 dvgArticles.DataBind();
             }
@@ -40,5 +42,7 @@ namespace SalesSystem
             Response.Redirect("detailArticle.aspx", false);
 
         }
+
+        
     }
 }

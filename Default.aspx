@@ -97,21 +97,26 @@
         <%} %>
 
 
-        <div class="row mb-3 row-cols-1 text-lg-center " style="margin-left: 15px">
+        <div class="row mb-3 row-cols-1 text-lg-center " style="margin-left: 15px ">
             <%
                 if (list != null)
                 {
                     foreach (Domain.Article Art in list)
                     {
             %>
-            <div class="card" style="width: 12rem; margin-right: 30px ;">
+
+            <div class="card" style="width: 12rem ; margin-right: 30px ;">
                 <img src="<%:Art.UrlImg %>" class="card-img-top" alt="Img Article">
                 <div class="card-body ">
                     <h5 class="card-title"><%: Art.Name %></h5>
                     <p class="card-text"><%:Art.Description %>.</p>
                     <p class="card-text"><%:Art.Price %> $</p>
 
-                    <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn btn-primary">Go to Article </a>
+                    <div class ="mb-3">
+                    <a href="Default.aspx?id=<%: Art.Id %>" class="btn "style="background-color:#C0F9AB">Add to favorites </a>
+
+                    </div>
+                    <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn " style="background-color:skyblue">Go to Article </a>
                 </div>
             </div>
             <%}
