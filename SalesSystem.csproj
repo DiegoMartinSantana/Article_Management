@@ -282,10 +282,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Security\Security.csproj">
-      <Project>{311e01fb-f764-4c81-a04f-70ab79031f8e}</Project>
-      <Name>Security</Name>
-    </ProjectReference>
     <ProjectReference Include="AccessBd\AccessBd.csproj">
       <Project>{a93de200-852f-4f5d-abd6-3f9088c29bf9}</Project>
       <Name>AccessBd</Name>
@@ -293,6 +289,10 @@
     <ProjectReference Include="Domain\Domain.csproj">
       <Project>{0bce15b7-e435-46b9-a372-ceef09284626}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="Security\Security.csproj">
+      <Project>{9ca21c86-a88d-48e9-b298-b67ff2fa292f}</Project>
+      <Name>Security</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
