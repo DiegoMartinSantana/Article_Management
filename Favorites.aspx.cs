@@ -6,28 +6,41 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain;
+using Security;
+
 namespace SalesSystem
 {
     public partial class Favourites : System.Web.UI.Page
     {
 
-       public List<Article> listArt = new List<Article>();
-        
+        public List<Article> listArt = new List<Article>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-
+                if (!Validation.Login(Session["user"]))
+                {
+                    Response.Redirect("Login.aspx");
+                }
                 ArticleAccess accessArt = new ArticleAccess();
                 FavoritesAccess accessFav = new FavoritesAccess();
-                Users user= (Users)Session["user"];
 
-                List<Favorites> listFav = accessFav.listFav(user.Id);
                 try
+                    
                 {
-                    foreach (Favorites itemFav in listFav)
+                    Users user = new Users();
+                    user = (Users)Session["user"];
+
+                    List<Favorites> listFav = accessFav.listFav(user.Id);
+
+                    foreach (var itemFav in listFav)
                     {
-                        listArt.Add(accessArt.returnById(itemFav.Id.ToString()));
+                        Article article= new Article();
+
+                        article = accessArt.returnById(itemFav.IdArticle);
+
+                        listArt.Add( article);
 
                     }
 
@@ -35,7 +48,7 @@ namespace SalesSystem
                 catch (Exception ex)
                 {
 
-                    throw ex; 
+                    throw ex;
                 }
 
 

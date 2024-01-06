@@ -7,7 +7,7 @@
     <div class="row mb-3 row-cols-1 text-lg-center " style="margin-left: 15px">
 
 
-        <%if (listArt != null)
+        <%if ( listArt.Count!=0)
             {
                 foreach (Domain.Article Art in listArt)
                 {        %>

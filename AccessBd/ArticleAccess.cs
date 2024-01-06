@@ -68,23 +68,23 @@ namespace AccessBd
 
 
         }
-        public Article returnById(string id)
+        public Article returnById(int id)
         {
 
             BdAccess data = new BdAccess();
             //I bring everything and then I use what I want
             try
             {
-                string query = " select  A.Codigo, Nombre, A.Descripcion artDesc, M.Descripcion DescMarca,C.Descripcion Catdesc,ImagenUrl,Precio , A.Id Idart, IdCategoria,IdMarca from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id=A.IdMarca and C.Id= A.IdCategoria   and A.id = " + id;
-               
-                
-                data.setConsultation(query);
 
+
+                data.setConsultation("select  A.Codigo, Nombre, A.Descripcion artDesc, M.Descripcion DescMarca,C.Descripcion Catdesc,ImagenUrl,Precio , A.Id Idart, IdCategoria,IdMarca from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id=A.IdMarca and C.Id= A.IdCategoria   and A.Id = @Idarticulo");
+                data.setParameter("@Idarticulo", id);
                 data.executeRead();
+                Article a = new Article();
 
-                
-                    Article a = new Article();
-                    a.Id = (int)data.reader["Idart"];
+                while (data.reader.Read())
+                {
+                    a.Id = id;
                     a.Name = (string)data.reader["Nombre"];
                     a.Price = (decimal)data.reader["Precio"];
 
@@ -103,7 +103,7 @@ namespace AccessBd
                     {
                         a.UrlImg = (string)data.reader["ImagenUrl"];
                     }
-
+                }
                 return a;
             }
             catch (Exception ex)

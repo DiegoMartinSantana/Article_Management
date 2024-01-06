@@ -38,7 +38,7 @@ namespace AccessBd
             try
             {
 
-                access.setConsultation("select IdArticulo from FAVORITOS where  Id=@iduser ");
+                access.setConsultation("select IdArticulo from FAVORITOS where  Iduser=@iduser ");
                 access.setParameter("iduser", iduser);
                 access.executeRead();
 

@@ -50,10 +50,12 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
                         </li>
-
+                        <%if (Security.Validation.Login(Session["user"]))
+                            {  %>
                         <li class="nav-item">
                             <a class="nav-link" href="Favorites.aspx">My favorites</a>
                         </li>
+                        <%} %>
                         <li class="nav-item">
                             <a class="nav-link" href="Wholesalers.aspx">Wholesalers</a>
                         </li>
