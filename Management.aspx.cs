@@ -6,12 +6,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using AccessBd;
 using Domain;
+using Security;
 namespace SalesSystem
 {
     public partial class Management : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Validation.IsAdmin(Session["user"]))
+            {
+                Response.Redirect("Login.aspx");
+            }
             ArticleAccess access = new ArticleAccess();
             if (!IsPostBack)
             {

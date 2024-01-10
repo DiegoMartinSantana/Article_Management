@@ -1,6 +1,7 @@
 ﻿using Access;
 using AccessBd;
 using Domain;
+using Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,14 @@ namespace SalesSystem
         public bool showChanges { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Validation.Login(Session["user"]))
+            {
+                Response.Redirect("Login.aspx");
+            }
 
             if (!IsPostBack)
             {
+
                 //is not admin
                 if (Request.QueryString["id"] != null || Request.QueryString["idShow"] != null)
                 {

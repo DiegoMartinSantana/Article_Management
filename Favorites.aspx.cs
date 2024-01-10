@@ -17,12 +17,13 @@ namespace SalesSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Validation.Login(Session["user"]))
+            {
+                Response.Redirect("Login.aspx");
+            }
             if (!IsPostBack)
             {
-                if (!Validation.Login(Session["user"]))
-                {
-                    Response.Redirect("Login.aspx");
-                }
+               
                 ArticleAccess accessArt = new ArticleAccess();
                 FavoritesAccess accessFav = new FavoritesAccess();
 

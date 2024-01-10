@@ -30,8 +30,9 @@ namespace SalesSystem
             }
 
 
-            if (Request.QueryString["id"] != null)
+       if (Request.QueryString["id"] != null)
             {
+                
                 FavoritesAccess fAccess = new FavoritesAccess();
                 Users user = (Users)Session["user"];
                 int idart = int.Parse(Request.QueryString["id"].ToString());

@@ -25,7 +25,7 @@
 
             </div>
             <div class="col">
-                <div class="mb-3 form-control-lg" style="padding:8.5%">
+                <div class="mb-3 form-control-lg" style="padding: 8.5%">
                     <asp:CheckBox OnCheckedChanged="chkfilter_CheckedChanged" ID="chkfilter" AutoPostBack="true" runat="server" />
                     <asp:Label Text="Show Advanced Filter" CssClass="form-check-label" runat="server" />
                 </div>
@@ -39,56 +39,56 @@
             {
         %>
         <asp:UpdatePanel runat="server">
-            <ContentTemplate>  
-        <div class="row mb-3">
+            <ContentTemplate>
+                <div class="row mb-3">
 
-            <div class="col " style="max-width: 25%">
-                <div class=" form-control-lg ">
-                    <asp:Label Text="Search by :" runat="server" />
+                    <div class="col " style="max-width: 25%">
+                        <div class=" form-control-lg ">
+                            <asp:Label Text="Search by :" runat="server" />
+                        </div>
+
+                        <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
+
+                            <asp:DropDownList runat="server" AutoPostBack="true" CssClass="dropdown-item" Style="font-size: larger" ID="ddlby" OnSelectedIndexChanged="ddlby_SelectedIndexChanged">
+                                <asp:ListItem Text="Brand" />
+                                <asp:ListItem Text="Category" />
+                                <asp:ListItem Text="Price" />
+
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="col " style="max-width: 25%">
+                        <div class=" form-control-lg ">
+                            <asp:Label Text="Critery :" runat="server" />
+                        </div>
+                        <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
+                            <asp:DropDownList runat="server" CssClass="dropdown-item" Style="font-size: larger" ID="ddlcritery">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="col " style="max-width: 25%">
+                        <div class=" form-control-lg ">
+                            <asp:Label Text="Filter :" runat="server" />
+                        </div>
+
+                        <div class="md-3 ">
+                            <asp:TextBox runat="server" Style="margin-left: 15px" ID="txtFilterAdvanced" CssClass="form-control form-text" />
+
+                        </div>
+
+                    </div>
+
+
                 </div>
-
-                <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
-
-                    <asp:DropDownList runat="server" AutoPostBack="true" CssClass="dropdown-item" Style="font-size: larger" ID="ddlby" OnSelectedIndexChanged="ddlby_SelectedIndexChanged">
-                        <asp:ListItem Text="Brand" />
-                        <asp:ListItem Text="Category" />
-                        <asp:ListItem Text="Price" />
-
-                    </asp:DropDownList>
-                </div>
-            </div>
-
-            <div class="col " style="max-width: 25%">
-                <div class=" form-control-lg ">
-                    <asp:Label Text="Critery :" runat="server" />
-                </div>
-                <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
-                    <asp:DropDownList runat="server" CssClass="dropdown-item" Style="font-size: larger" ID="ddlcritery">
-                    </asp:DropDownList>
-                </div>
-            </div>
-
-            <div class="col " style="max-width: 25%">
-                <div class=" form-control-lg ">
-                    <asp:Label Text="Filter :" runat="server" />
-                </div>
-
-                <div class="md-3 " >
-                    <asp:TextBox runat="server" Style="margin-left: 15px" ID="txtFilterAdvanced" CssClass="form-control form-text" />
-
-                </div>
-
-            </div>
-
-
-        </div>
-                 </ContentTemplate>
+            </ContentTemplate>
         </asp:UpdatePanel>
         <div class="row">
             <div class="col ">
 
                 <div class="mb-3" style="margin-left: 80%">
-                    <asp:Button Text="Search"  runat="server" Autopostback="true" CssClass="btn btn-primary" ID="btnsearchAdvanced" OnClick="btnsearchAdvanced_Click" Style="font-size: larger ;margin-top :-137px" />
+                    <asp:Button Text="Search" runat="server" Autopostback="true" CssClass="btn btn-primary" ID="btnsearchAdvanced" OnClick="btnsearchAdvanced_Click" Style="font-size: larger; margin-top: -137px" />
 
                 </div>
             </div>
@@ -97,7 +97,7 @@
         <%} %>
 
 
-        <div class="row mb-3 row-cols-1 text-lg-center " style="margin-left: 15px ">
+        <div class="row mb-3 row-cols-1 text-lg-center " style="margin-left: 15px">
             <%
                 if (list != null)
                 {
@@ -105,18 +105,37 @@
                     {
             %>
 
-            <div class="card" style="width: 12rem ; margin-right: 30px ;">
+            <div class="card" style="width: 12rem; margin-right: 30px;">
                 <img src="<%:Art.UrlImg %>" class="card-img-top" alt="Img Article">
                 <div class="card-body ">
                     <h5 class="card-title"><%: Art.Name %></h5>
                     <p class="card-text"><%:Art.Description %>.</p>
                     <p class="card-text"><%:Art.Price %> $</p>
 
-                    <div class ="mb-3">
-                    <a href="Default.aspx?id=<%: Art.Id %>" class="btn "style="background-color:#C0F9AB">Add to favorites </a>
+                    <%if (Security.Validation.Login(Session["user"]))
+                        {  %>
+                    <% AccessBd.FavoritesAccess access = new AccessBd.FavoritesAccess();
+                        Domain.Users user = (Domain.Users)Session["user"];
+                        if (!access.IsFavorite(user.Id, Art.Id))
+                        {  %>
+
+                    <div class="mb-3">
+                        <a href="Default.aspx?id=<%: Art.Id %>" class="btn " style="background-color: #C0F9AB">Add to favorites </a>
 
                     </div>
-                    <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn " style="background-color:skyblue">Go to Article </a>
+                    <%}
+                        else
+                        {
+                    %>
+
+                    <div class="mb-3">
+                        <label  class="btn" style="background-color: gold"> Favorite</label>
+
+                    </div>
+
+                    <%} %>
+                    <%} %>
+                    <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn " style="background-color: skyblue">Go to Article </a>
                 </div>
             </div>
             <%}

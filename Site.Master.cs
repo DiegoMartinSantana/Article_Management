@@ -22,6 +22,7 @@ namespace SalesSystem
         protected void btnlogout_Click(object sender, EventArgs e)
         {
             Session.Clear();
+            Response.Redirect("Login.aspx");
 
         }
     }
