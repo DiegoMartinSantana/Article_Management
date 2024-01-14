@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Management.aspx.cs" Inherits="SalesSystem.Management" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        setTimeout(function () {
+            document.getElementById('<%=lblAdded.ClientID %>').style.display = 'none'); }, 2500);
+
+    </script>
+
     <div class="row">
         <div class="col">
             <div class="mb-3">
@@ -11,11 +17,12 @@
         </div>
 
     </div>
+
     <div class="row">
         <div class="col">
             <div class="mb-3">
-                <asp:GridView runat="server" ID="dvgArticles" AutoGenerateColumns="false" PageSize="5" OnPageIndexChanging="dvgArticles_PageIndexChanging"
-                    DataKeyNames="Id" OnSelectedIndexChanged="dvgArticles_SelectedIndexChanged" AllowPaging="true">
+                <asp:GridView runat="server" ID="dvgArticles" AutoGenerateColumns="false" AllowPaging="true"  OnPageIndexChanging="dvgArticles_PageIndexChanging"
+                    DataKeyNames="Id" PageSize="5" OnSelectedIndexChanged="dvgArticles_SelectedIndexChanged"  CssClass="table">
                     <Columns>
                         <asp:BoundField HeaderText="Cod" DataField="CodArticle" />
                         <asp:BoundField HeaderText="Name" DataField="Name" />
@@ -33,12 +40,18 @@
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col">
             <div class="mb-3">
-                <asp:Button Text="Add Article" CssClass="btn btn-primary" ID="btnAddArticle" OnClick="btnAddArticle_Click" runat="server" />
+                <asp:Label ID="lblAdded" Text="An Article has been added successfully " CssClass="form-label" Style="color: red" Visible="false" runat="server" />
             </div>
+            
+                    <div class="mb-3">
+                        <asp:Button Text="Add Article" CssClass="btn btn-primary" ID="btnAddArticle" OnClick="btnAddArticle_Click" runat="server" />
+                    </div>
+                
         </div>
-       
+
     </div>
 </asp:Content>

@@ -1,7 +1,6 @@
 ﻿using Access;
 using AccessBd;
 using Domain;
-using Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace SalesSystem
         public bool showChanges { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Validation.Login(Session["user"]))
+            if (!Security.Validation.Login(Session["user"]))
             {
                 Response.Redirect("Login.aspx");
             }
@@ -29,8 +28,6 @@ namespace SalesSystem
                 //is not admin
                 if (Request.QueryString["id"] != null || Request.QueryString["idShow"] != null)
                 {
-
-                    show = false;
 
                     txtName.ReadOnly = true;
                     txtPrice.ReadOnly = true;
@@ -57,8 +54,16 @@ namespace SalesSystem
                     txtName.Text = art.Name;
                     txtPrice.Text = art.Price.ToString();
                     txtDescription.Text = art.Description;
-                    txtImg.ImageUrl = art.UrlImg;
-                    txtImg.AlternateText = "Img Article";
+                    if (!string.IsNullOrEmpty(art.UrlImg))
+                    {
+                        txtImg2.ImageUrl = Security.Helper.UrlLocal(art.UrlImg);
+
+                    }
+                    else
+                    {
+                        txtImg2.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
+                    }
+                    txtImg2.AlternateText = "Img Article";
                     txtCategory.Text = art.category.Description.ToString();
                     txtBrand.Text = art.brand.Description.ToString();
                     txtCodArticle.Text = art.CodArticle;
@@ -75,6 +80,7 @@ namespace SalesSystem
                     categoryAccess catAccess = new categoryAccess();
                     brandAccess brandAccess = new brandAccess();
                     show = true;
+
 
                     try
                     {
@@ -97,14 +103,8 @@ namespace SalesSystem
 
                         throw ex;
                     }
-
                 }
-
-
             }
-           
-            
-
         }
 
         protected void btnsaveArticle_Click(object sender, EventArgs e)
@@ -123,8 +123,39 @@ namespace SalesSystem
                 art.brand.Id = int.Parse(ddlBrands.SelectedValue);
                 art.category = new Category();
                 art.category.Id = int.Parse(ddlCategories.SelectedValue);
-                accessArt.addArticle(art);
-                Response.Redirect("detailArticle.aspx", false);
+
+
+                //create de route "automatically" 
+                //mappath = route of pokedexweb 
+
+                //I get the last id and add 1
+                Article lastArt;
+                try
+                {
+                    lastArt = accessArt.listArticle().Last(); //with Linq
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                int idSend = lastArt.Id + 1;
+                if (!string.IsNullOrEmpty(fileArticle.PostedFile.FileName))
+                {
+                    string route = Server.MapPath("./Images/Imgs_Art/");
+                    fileArticle.PostedFile.SaveAs(route + "ArtCod_" + idSend + ".jpg");
+                    art.UrlImg = "ArtCod_" + idSend + ".jpg";
+                }
+
+                try
+                {
+                    accessArt.addArticle(art);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+
+                }
+                Response.Redirect("Management.aspx?add=" + 1, false);
             }
             catch (Exception ex)
             {
@@ -139,6 +170,7 @@ namespace SalesSystem
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
+            show = false;
             showChanges = true;
             txtName.ReadOnly = false;
             txtPrice.ReadOnly = false;
@@ -146,9 +178,10 @@ namespace SalesSystem
             txtCategory.ReadOnly = false;
             txtBrand.ReadOnly = false;
             txtCodArticle.ReadOnly = false;
+            fileArticle2.Visible = true;
+            divUploadUrl.Visible = true;
             categoryAccess catAccess = new categoryAccess();
             brandAccess brandAccess = new brandAccess();
-            show = true;
 
             try
             {
@@ -188,18 +221,42 @@ namespace SalesSystem
 
             ArticleAccess access = new ArticleAccess();
             Article art = new Article();
+            try
+            {
 
-            art.Description = txtDescription.Text;
-            art.Price = decimal.Parse(txtPrice.Text);
-            art.CodArticle = txtCodArticle.Text;
-            art.Name = txtName.Text;
-            art.brand = new Brand();
-            art.brand.Id = int.Parse(ddlBrands.SelectedValue);
-            art.category = new Category();
-            art.category.Id = int.Parse(ddlCategories.SelectedValue);
-            access.editArticle(art);
+                art.Description = txtDescription.Text;
+                art.Price = decimal.Parse(txtPrice.Text);
+                art.CodArticle = txtCodArticle.Text;
+                art.Name = txtName.Text;
+                art.brand = new Brand();
+                art.brand.Id = int.Parse(ddlBrands.SelectedValue);
+                art.category = new Category();
+                art.category.Id = int.Parse(ddlCategories.SelectedValue);
 
-            Response.Redirect("detail.Article.aspx");
+                int idart = int.Parse(Request.QueryString["id"]);
+                art.Id = idart;
+
+                if (!string.IsNullOrEmpty(fileArticle2.PostedFile.FileName))
+                {
+                    string route = Server.MapPath("./Images/Imgs_Art/");
+
+                    fileArticle2.PostedFile.SaveAs(route + "Art_" + idart + ".jpg");
+                    art.UrlImg = "Art_" + idart + ".jpg";
+                }
+                else if (!string.IsNullOrEmpty(txtUrl2.Text))
+                {
+                    art.UrlImg = txtUrl2.Text;
+                }
+
+                access.editArticle(art);
+
+                Response.Redirect("detail.Article.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

@@ -269,6 +269,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Imgs_Art\" />
+    <Folder Include="Images\Imgs_Profile\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

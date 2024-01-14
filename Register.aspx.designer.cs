@@ -15,24 +15,6 @@ namespace SalesSystem
     {
 
         /// <summary>
-        /// Control lblId.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblId;
-
-        /// <summary>
-        /// Control txtid.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtid;
-
-        /// <summary>
         /// Control lblEmailUser.
         /// </summary>
         /// <remarks>
@@ -132,22 +114,22 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.Label lblUrlImg;
 
         /// <summary>
-        /// Control file1.
+        /// Control fileUser1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile file1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile fileUser1;
 
         /// <summary>
-        /// Control img300px.
+        /// Control txtImgUser1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img300px;
+        protected global::System.Web.UI.WebControls.Image txtImgUser1;
 
         /// <summary>
         /// Control btnSaveChanges.
@@ -157,6 +139,15 @@ namespace SalesSystem
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveChanges;
+
+        /// <summary>
+        /// Control btnCancel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
 
         /// <summary>
         /// Control btnEditProfile.

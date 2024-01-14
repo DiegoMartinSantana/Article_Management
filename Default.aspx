@@ -106,7 +106,11 @@
             %>
 
             <div class="card" style="width: 12rem; margin-right: 30px;">
-                <img src="<%:Art.UrlImg %>" class="card-img-top" alt="Img Article">
+
+                <% 
+                    imgArtCard.ImageUrl = Security.Helper.UrlLocal(Art.UrlImg);
+                %>
+                <asp:Image alt="Image Article" ID="imgArtCard" runat="server" />
                 <div class="card-body ">
                     <h5 class="card-title"><%: Art.Name %></h5>
                     <p class="card-text"><%:Art.Description %>.</p>
@@ -129,7 +133,7 @@
                     %>
 
                     <div class="mb-3">
-                        <label  class="btn" style="background-color: gold"> Favorite</label>
+                        <label class="btn" style="background-color: gold">Favorite</label>
 
                     </div>
 

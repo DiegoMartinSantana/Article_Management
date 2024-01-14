@@ -44,13 +44,22 @@ namespace AccessBd
 
             try
             {
-                access.setConsultation("insert into ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) values (@cod,@nom,@desc,@idmar,@idcat,@imgurl,@pre) where id=@id");
+              
+                access.setConsultation("Update  ARTICULOS set Codigo = @cod, Nombre = @nom , Descripcion = @desc, IdMarca=@idmar,IdCategoria = @idcat, ImagenUrl = @imgurl WHERE Id=@id");
                 access.setParameter("@cod", art.CodArticle);
                 access.setParameter("@nom", art.Name);
                 access.setParameter("@desc", art.Description);
                 access.setParameter("@idmar", art.brand.Id);
                 access.setParameter("@idcat", art.category.Id);
-                access.setParameter("@imgurl", DBNull.Value);
+                if (string.IsNullOrEmpty(art.UrlImg))
+                {
+                    access.setParameter("@imgurl", DBNull.Value);
+                }
+                else
+                {
+                    access.setParameter("@imgurl", art.UrlImg);
+
+                }
                 access.setParameter("@pre", art.Price);
                 access.setParameter("@id", art.Id);
                 access.executeAccion();
@@ -301,7 +310,15 @@ namespace AccessBd
                 access.setParameter("@desc", art.Description);
                 access.setParameter("@idmar", art.brand.Id);
                 access.setParameter("@idcat", art.category.Id);
-                access.setParameter("@imgurl", DBNull.Value);
+                if (string.IsNullOrEmpty(art.UrlImg))
+                {
+                    access.setParameter("@imgurl", DBNull.Value);
+                }
+                else
+                {
+                    access.setParameter("@imgurl", art.UrlImg);
+
+                }
                 access.setParameter("@pre", art.Price);
 
 

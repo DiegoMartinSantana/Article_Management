@@ -20,16 +20,23 @@ namespace SalesSystem
             ArticleAccess access = new ArticleAccess();
             if (!IsPostBack)
             {
-                
 
-                dvgArticles.DataSource = access.listArticle();
+                if (Request.QueryString["add"] != null)
+                {
+                    lblAdded.Visible = true;
+                    string script = "setTimeout(function() { document.getElementById('" + lblAdded.ClientID + "').style.display = 'none'; }, 2500);";
+                    ClientScript.RegisterStartupScript(this.GetType(), "ocultarLblAdded", script, true);
+                }
+                dvgArticles.DataSource = Session["listArticle"];
                 dvgArticles.DataBind();
             }
         }
-
+        
         protected void dvgArticles_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dvgArticles.PageIndex = e.NewPageIndex;
+            dvgArticles.DataSource = Session["listArticle"];
+
             dvgArticles.DataBind();
         }
 
@@ -48,6 +55,6 @@ namespace SalesSystem
 
         }
 
-        
+
     }
 }

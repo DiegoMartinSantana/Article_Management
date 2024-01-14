@@ -12,6 +12,7 @@
                 foreach (Domain.Article Art in listArt)
                 {        %>
         <div class="card" style="width: 20rem; margin-right: 30px;">
+            
             <img src="<%:Art.UrlImg %>" class="card-img-top" alt="Img Article">
             <div class="card-body ">
                 <h5 class="card-title"><%: Art.Name %></h5>
