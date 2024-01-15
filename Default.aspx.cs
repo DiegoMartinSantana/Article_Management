@@ -26,7 +26,7 @@ namespace SalesSystem
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             if (!IsPostBack)
             {
                 refreshList();
@@ -57,26 +57,26 @@ namespace SalesSystem
             list = list.FindAll(x => x.Name.ToUpper().Contains(txtsearch.Text.ToUpper()) ||
             x.Description.ToUpper().Contains(txtsearch.Text.ToUpper()));
 
-
+            
         }
 
         protected void ddlby_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            ddlcritery.Items.Clear();
+            
+            ddlCritery.Items.Clear();
 
             if (ddlby.SelectedItem.ToString() == "Price")
             {
-                ddlcritery.Items.Add("Less than : ");
-                ddlcritery.Items.Add("Equals to : ");
-                ddlcritery.Items.Add("More than : ");
+                ddlCritery.Items.Add("Less than : ");
+                ddlCritery.Items.Add("Equals to : ");
+                ddlCritery.Items.Add("More than : ");
 
             }
             else
             {
-                ddlcritery.Items.Add("Starts with : ");
-                ddlcritery.Items.Add("Ends with : ");
-                ddlcritery.Items.Add("Contains : ");
+                ddlCritery.Items.Add("Starts with : ");
+                ddlCritery.Items.Add("Ends with : ");
+                ddlCritery.Items.Add("Contains : ");
 
             }
 
@@ -87,7 +87,7 @@ namespace SalesSystem
             try
             {
                 ArticleAccess access = new ArticleAccess();
-                list = access.filter(ddlby.SelectedItem.ToString(), ddlcritery.SelectedItem.ToString(), txtFilterAdvanced.Text);
+                list = access.filter(ddlby.SelectedItem.ToString(), ddlCritery.SelectedItem.ToString(), txtFilterAdvanced.Text);
 
 
             }

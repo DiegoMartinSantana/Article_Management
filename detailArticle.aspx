@@ -4,7 +4,7 @@
 
 
 
-    <div class="row" style="font-size: large">
+    <div class="row" >
 
         <%if (showChanges)
             {

@@ -38,7 +38,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" style="font-size: larger">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" >
             <div class="container-fluid">
                 <img class="navbar-brand" style="width: 50px" src="https://i.pinimg.com/564x/77/e5/0c/77e50c04f9f512a456eb3e135a1c013b.jpg" alt="ShopIcon" />
 

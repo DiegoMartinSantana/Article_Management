@@ -33,8 +33,6 @@
         </div>
 
 
-
-
         <%if (chkfilter.Checked)
             {
         %>
@@ -49,7 +47,7 @@
 
                         <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
 
-                            <asp:DropDownList runat="server" AutoPostBack="true" CssClass="dropdown-item" Style="font-size: larger" ID="ddlby" OnSelectedIndexChanged="ddlby_SelectedIndexChanged">
+                            <asp:DropDownList runat="server" AutoPostBack="true" CssClass="dropdown-item"  ID="ddlby" OnSelectedIndexChanged="ddlby_SelectedIndexChanged">
                                 <asp:ListItem Text="Brand" />
                                 <asp:ListItem Text="Category" />
                                 <asp:ListItem Text="Price" />
@@ -62,8 +60,9 @@
                         <div class=" form-control-lg ">
                             <asp:Label Text="Critery :" runat="server" />
                         </div>
+
                         <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
-                            <asp:DropDownList runat="server" CssClass="dropdown-item" Style="font-size: larger" ID="ddlcritery">
+                            <asp:DropDownList runat="server" CssClass="dropdown-item"  ID="ddlCritery">
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -88,7 +87,7 @@
             <div class="col ">
 
                 <div class="mb-3" style="margin-left: 80%">
-                    <asp:Button Text="Search" runat="server" Autopostback="true" CssClass="btn btn-primary" ID="btnsearchAdvanced" OnClick="btnsearchAdvanced_Click" Style="font-size: larger; margin-top: -137px" />
+                    <asp:Button Text="Search" runat="server" Autopostback="true" CssClass="btn btn-primary" ID="btnsearchAdvanced" OnClick="btnsearchAdvanced_Click" Style=" margin-top: -137px" />
 
                 </div>
             </div>

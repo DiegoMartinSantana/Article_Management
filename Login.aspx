@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SalesSystem.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   <div class="row justify-content-center" style="font-size:large"> 
+   <div class="row justify-content-center" > 
         <div class="col-md-6">
             <div class="card" style="margin-top:5%">
                 <div class="card-header">

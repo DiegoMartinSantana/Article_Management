@@ -4,10 +4,10 @@
 
 
 
-    <div class="row" style="font-size: large">
+    <div class="row">
         <div class="col-md-6">
 
-            <h5> All changes have been saved </h5>
+            <h5 runat="server" id="hSavedChanges">All changes have been saved </h5>
             <!-- ADD JAVASCRIPT TO DISAPPEAR  -->
 
             <div class="mb-3">
@@ -15,26 +15,19 @@
                 <asp:Label ID="lblEmailUser" runat="server" Text="Email :" CssClass="form-label"></asp:Label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="txtemailuser" Style="max-width: 80%" PlaceHolder="Enter Email" />
             </div>
-            <%if (!Security.Validation.Login(Session["user"]))
-                {%>
-            <div class="mb-3">
-
-                <asp:Label ID="lblPass" runat="server" Text="New Pass : " CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" TextMode="Password" CssClass="form-control" ID="txtNewPass" Style="max-width: 80%" PlaceHolder="Enter Password" />
-            </div>
-            <%//add other pass check %>
-
-
-            <%}
-                else
-                { %>
+            
 
             <div class="mb-3">
 
-                <asp:Label ID="Label1" runat="server" Text="Pass : " CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtPass" Style="max-width: 80%" PlaceHolder="Enter New Pass" />
+                <asp:Label ID="lblPass" runat="server" Text="Enter new Pass : " CssClass="form-label"></asp:Label>
+                <asp:TextBox runat="server" CssClass="form-control" ID="txtPass" Style="max-width: 80%" PlaceHolder="Enter New Password" />
             </div>
-            <%} %>
+            <div class="mb-3">
+
+                <asp:Label  runat="server" ID="lblRepeatPass" Text="Repeat Pass : " CssClass="form-label"></asp:Label>
+                <asp:TextBox runat="server"  CssClass="form-control" ID="txtRepeatPass" Style="max-width: 80%" PlaceHolder="Repeat Password " />
+            </div>
+            <p style="color:red" runat="server" visible="false" id="pPasswords"> The passwords are not Equals </p>
             <div class="mb-3">
                 <asp:Label ID="lblName" runat="server" Text="Name :" CssClass="form-label"></asp:Label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="TxtName" Style="max-width: 80%" PlaceHolder="Enter your Name" />
@@ -69,7 +62,7 @@
 
             %>
             <div class="mb-3">
-                <asp:Button Text="Save your Changes" ID="btnSaveChanges" OnClick="btnSaveChanges_Click" CssClass="btn btn-success" Enabled="false" Visible="false" runat="server" />
+                <asp:Button Text="Save your Changes" ID="btnSaveChanges" OnClick="btnSaveChanges_Click" CssClass="btn btn-success" Enabled="false" Visible="false" runat="server" AutoPostback="false"/>
 
             </div>
             <div class="mb-3">
@@ -78,7 +71,7 @@
             </div>
             <div class="mb-3">
 
-                <asp:Button Text="Edit Profile" ID="btnEditProfile" OnClick="btnEditProfile_Click" CssClass="btn btn-success" runat="server" />
+                <asp:Button Text="Edit Profile" ID="btnEditProfile" OnClick="btnEditProfile_Click" CssClass="btn btn-success" runat="server" AutoPostback="false" />
 
             </div>
 
@@ -87,7 +80,7 @@
             <%}
                 else
                 {  %>
-            <asp:Button Text="Create User" ID="btnCreate" OnClick="btnCreate_Click" CssClass="btn btn-primary" runat="server" />
+            <asp:Button Text="Create User" ID="btnCreate" OnClick="btnCreate_Click" CssClass="btn btn-primary" runat="server" AutoPostback="false"/>
 
 
 

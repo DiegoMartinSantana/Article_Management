@@ -51,13 +51,13 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.DropDownList ddlby;
 
         /// <summary>
-        /// Control ddlcritery.
+        /// Control ddlCritery.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcritery;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCritery;
 
         /// <summary>
         /// Control txtFilterAdvanced.
