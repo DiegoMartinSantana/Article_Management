@@ -203,8 +203,10 @@ namespace SalesSystem
 
         protected void btnEditProfile_Click(object sender, EventArgs e)
         {
-            int send = 1;
-            Response.Redirect("Register.aspx?changes=" + send, false);
+            int sendP = 1;
+            Response.Redirect("Validate.aspx?validate="+sendP,false);
+
+           
 
         }
         protected void btnSaveChanges_Click(object sender, EventArgs e)

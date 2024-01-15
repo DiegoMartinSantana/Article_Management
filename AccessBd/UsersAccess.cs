@@ -69,7 +69,7 @@ namespace AccessBd
             {
                 access.close();
             }
-            
+
         }
         public int insert(Users user)
         {
@@ -146,6 +146,44 @@ namespace AccessBd
             {
                 access.close();
             }
+
+        }
+
+        public bool validatePass(int Id, string password)
+        {
+            BdAccess access = new BdAccess();
+            try
+            {
+                access.setConsultation("SELECT Pass FROM USERS where Id = @id");
+                access.setParameter("id", Id);
+                access.executeRead();
+
+                string passRead = (string)access.reader["Pass"];
+                if (passRead != null)
+                {
+                    if (passRead == password)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                access.close();
+            }
+
 
         }
     }
