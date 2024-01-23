@@ -47,7 +47,7 @@
 
                         <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
 
-                            <asp:DropDownList runat="server" AutoPostBack="true" CssClass="dropdown-item"  ID="ddlby" OnSelectedIndexChanged="ddlby_SelectedIndexChanged">
+                            <asp:DropDownList runat="server" AutoPostBack="true" CssClass="dropdown-item" ID="ddlby" OnSelectedIndexChanged="ddlby_SelectedIndexChanged">
                                 <asp:ListItem Text="Brand" />
                                 <asp:ListItem Text="Category" />
                                 <asp:ListItem Text="Price" />
@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="mb-3 form-control  " style="text-align: center; margin-left: 15px">
-                            <asp:DropDownList runat="server" CssClass="dropdown-item"  ID="ddlCritery">
+                            <asp:DropDownList runat="server" CssClass="dropdown-item" ID="ddlCritery">
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
             <div class="col ">
 
                 <div class="mb-3" style="margin-left: 80%">
-                    <asp:Button Text="Search" runat="server" Autopostback="true" CssClass="btn btn-primary" ID="btnsearchAdvanced" OnClick="btnsearchAdvanced_Click" Style=" margin-top: -137px" />
+                    <asp:Button Text="Search" runat="server" Autopostback="true" CssClass="btn btn-primary" ID="btnsearchAdvanced" OnClick="btnsearchAdvanced_Click" Style="margin-top: -137px" />
 
                 </div>
             </div>
@@ -104,13 +104,18 @@
                     {
             %>
 
-            <div class="card" style="width: 12rem; margin-right: 30px;">
+            <div class="card" style="width: 12rem; margin-right: 30px; margin-block-end:inherit ;display:grid">
 
                 <% 
+
                     imgArtCard.ImageUrl = Security.Helper.UrlLocal(Art.UrlImg);
-                %>
-                <asp:Image alt="Image Article" ID="imgArtCard" runat="server" />
-                <div class="card-body ">
+
+
+                %><div style="border:1px solid#ffffff ; box-sizing:border-box ;max-width:352px;overflow:hidden" >
+                    <asp:Image alt="Image Article" ID="imgArtCard" runat="server" Style="margin-top: 10%; width: 100% ; height:auto"  />
+
+                </div>
+                <div class="card-body " >
                     <h5 class="card-title"><%: Art.Name %></h5>
                     <p class="card-text"><%:Art.Description %>.</p>
                     <p class="card-text"><%:Art.Price %> $</p>

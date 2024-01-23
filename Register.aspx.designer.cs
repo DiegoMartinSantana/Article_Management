@@ -150,13 +150,13 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.Image txtImgUser1;
 
         /// <summary>
-        /// Control btnSaveChanges.
+        /// Control btnSave.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveChanges;
+        protected global::System.Web.UI.WebControls.Button btnSave;
 
         /// <summary>
         /// Control btnCancel.

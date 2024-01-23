@@ -15,14 +15,12 @@ namespace SalesSystem
 
         }
 
-       
-
         protected void btnSendEmail_Click(object sender, EventArgs e)
         {
             txtThanks.Enabled = true;
             txtThanks.Visible = true;
             EmailService service = new EmailService();
-            service.buildEmail(txtEmailSend.Text, "Wholesalers", "All wholesale sales have a 15% discount, please respond with the list of items you wish to purchase. (Minimum of 5). Thanks for your time!");
+            service.buildEmail(txtEmailSend.Text, "Wholesalers", "All wholesale sales have a 15% discount, please respond with the list of items you wish to purchase. (Minimum of 5). Thanks for visiting our Web.");
             try
             {
                 service.sendEmail();
@@ -30,7 +28,8 @@ namespace SalesSystem
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("error.aspx", false);
             }       
 
           

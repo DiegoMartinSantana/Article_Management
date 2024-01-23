@@ -44,7 +44,8 @@ namespace SalesSystem
             catch (Exception ex)
             {
 
-                throw ex; //redirect to error page !
+                Session.Add("error", ex);
+                Response.Redirect("error.aspx", false);
 
             }
 

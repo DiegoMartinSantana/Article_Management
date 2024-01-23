@@ -11,7 +11,7 @@
             {
                 foreach (Domain.Article Art in listArt)
                 {        %>
-        <div class="card" style="width: 20rem; margin-right: 30px;">
+        <div class="card" style="width: 12rem; margin-right: 30px; display:grid;margin-block-end:inherit">
             
             <img src="<%:Art.UrlImg %>" class="card-img-top" alt="Img Article">
             <div class="card-body ">

@@ -100,8 +100,8 @@ namespace SalesSystem
                     }
                     catch (Exception ex)
                     {
-
-                        throw ex;
+                        Session.Add("error", ex);
+                        Response.Redirect("error.aspx", false);
                     }
                 }
             }
@@ -152,15 +152,15 @@ namespace SalesSystem
                 }
                 catch (Exception ex)
                 {
-                    throw ex;
-
+                    Session.Add("error", ex);
+                    Response.Redirect("error.aspx", false);
                 }
                 Response.Redirect("Management.aspx?add=" + 1, false);
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("error.aspx", false);
             }
 
 
@@ -201,8 +201,8 @@ namespace SalesSystem
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("error.aspx", false);
             }
 
         }
@@ -254,8 +254,8 @@ namespace SalesSystem
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Session.Add("error", ex);
+                Response.Redirect("error.aspx", false);
             }
         }
     }

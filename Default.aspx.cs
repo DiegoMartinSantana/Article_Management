@@ -14,7 +14,7 @@ namespace SalesSystem
 
     public partial class _Default : Page
     {
-        
+
         //the list has to be a property of the page to be accessed from the aspx
         public List<Article> list { get; set; }
         public int IdArticle { get; set; }
@@ -26,7 +26,7 @@ namespace SalesSystem
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
                 refreshList();
@@ -57,12 +57,12 @@ namespace SalesSystem
             list = list.FindAll(x => x.Name.ToUpper().Contains(txtsearch.Text.ToUpper()) ||
             x.Description.ToUpper().Contains(txtsearch.Text.ToUpper()));
 
-            
+
         }
 
         protected void ddlby_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             ddlCritery.Items.Clear();
 
             if (ddlby.SelectedItem.ToString() == "Price")
@@ -93,15 +93,10 @@ namespace SalesSystem
             }
             catch (Exception ex)
             {
+                Session.Add("error", ex);
+                Response.Redirect("error.aspx", false);
 
-                throw ex;
             }
-
-
-
         }
-
-
-
     }
 }

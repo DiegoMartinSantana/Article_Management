@@ -41,15 +41,15 @@ namespace SalesSystem
 
                         article = accessArt.returnById(itemFav.IdArticle);
 
-                        listArt.Add( article);
+                        listArt.Add(article);
 
                     }
 
                 }
                 catch (Exception ex)
                 {
-
-                    throw ex;
+                    Session.Add("error", ex);
+                    Response.Redirect("error.aspx", false);
                 }
 
 

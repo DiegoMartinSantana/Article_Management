@@ -158,12 +158,19 @@ namespace AccessBd
                 access.setParameter("id", Id);
                 access.executeRead();
 
-                string passRead = (string)access.reader["Pass"];
-                if (passRead != null)
+                if (access.reader.Read())
                 {
-                    if (passRead == password)
+                    string passRead = (string)access.reader["Pass"];
+                    if (passRead != null)
                     {
-                        return true;
+                        if (passRead == password)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
