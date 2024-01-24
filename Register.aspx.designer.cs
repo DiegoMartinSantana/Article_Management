@@ -15,15 +15,6 @@ namespace SalesSystem
     {
 
         /// <summary>
-        /// Control hSavedChanges.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hSavedChanges;
-
-        /// <summary>
         /// Control lblEmailUser.
         /// </summary>
         /// <remarks>
@@ -141,6 +132,24 @@ namespace SalesSystem
         protected global::System.Web.UI.HtmlControls.HtmlInputFile fileUser1;
 
         /// <summary>
+        /// Control lblUrlLink.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUrlLink;
+
+        /// <summary>
+        /// Control txtUrlLink.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUrlLink;
+
+        /// <summary>
         /// Control txtImgUser1.
         /// </summary>
         /// <remarks>
@@ -150,15 +159,6 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.Image txtImgUser1;
 
         /// <summary>
-        /// Control btnSave.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
-
-        /// <summary>
         /// Control btnCancel.
         /// </summary>
         /// <remarks>
@@ -166,15 +166,6 @@ namespace SalesSystem
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
-
-        /// <summary>
-        /// Control btnEditProfile.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditProfile;
 
         /// <summary>
         /// Control btnCreate.

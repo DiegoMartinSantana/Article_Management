@@ -11,7 +11,7 @@ namespace SalesSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Security.Validation.Login(Session["user"]))
+            if (!Security.Validation.Login(Session["user"]))
             {
                 Response.Redirect("Default.aspx", false);
             }
