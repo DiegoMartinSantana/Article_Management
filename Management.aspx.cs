@@ -45,8 +45,6 @@ namespace SalesSystem
             string article = dvgArticles.SelectedDataKey.Value.ToString();
             Response.Redirect("detailArticle.aspx?id=" + article);
 
-
-
         }
 
         protected void btnAddArticle_Click(object sender, EventArgs e)

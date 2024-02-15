@@ -8,21 +8,28 @@
     </script>
 
     <div class="row">
-        <div class="col">
+        <div class="col" style="margin-top: 2%">
             <div class="mb-3">
 
                 <h3>Welcome to your Article Manager</h3>
-
             </div>
+        </div>
+
+        <div class="col" style="margin-top: 2%">
+
+            <div class="mb-3">
+                <a class="btn btn-danger text-white" href="HowWork.aspx">How Work? </a>
+            </div>
+
         </div>
 
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-top: 2%">
         <div class="col">
             <div class="mb-3">
-                <asp:GridView runat="server" ID="dvgArticles" AutoGenerateColumns="false" AllowPaging="true"  OnPageIndexChanging="dvgArticles_PageIndexChanging"
-                    DataKeyNames="Id" PageSize="5" OnSelectedIndexChanged="dvgArticles_SelectedIndexChanged"  CssClass="table">
+                <asp:GridView runat="server" ID="dvgArticles" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="dvgArticles_PageIndexChanging"
+                    DataKeyNames="Id" PageSize="5" OnSelectedIndexChanged="dvgArticles_SelectedIndexChanged" CssClass="table">
                     <Columns>
                         <asp:BoundField HeaderText="Cod" DataField="CodArticle" />
                         <asp:BoundField HeaderText="Name" DataField="Name" />
@@ -46,11 +53,11 @@
             <div class="mb-3">
                 <asp:Label ID="lblAdded" Text="An Article has been added successfully " CssClass="form-label" Style="color: red" Visible="false" runat="server" />
             </div>
-            
-                    <div class="mb-3">
-                        <asp:Button Text="Add Article" CssClass="btn btn-primary" ID="btnAddArticle" OnClick="btnAddArticle_Click" runat="server" />
-                    </div>
-                
+
+            <div class="mb-3">
+                <asp:Button Text="Add Article" CssClass="btn btn-primary" ID="btnAddArticle" OnClick="btnAddArticle_Click" runat="server" />
+            </div>
+
         </div>
 
     </div>

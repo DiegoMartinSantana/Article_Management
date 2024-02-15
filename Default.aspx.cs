@@ -32,6 +32,16 @@ namespace SalesSystem
                 refreshList();
             }
 
+            if (Request.QueryString["idD"] != null)
+            {
+                FavoritesAccess favoritesAccess = new FavoritesAccess();
+                Users user = (Users)Session["user"];
+                int idDelete = int.Parse(Request.QueryString["idD"].ToString());
+                favoritesAccess.Delete(user.Id, idDelete);
+
+            }
+
+
 
             if (Request.QueryString["id"] != null)
             {
@@ -46,7 +56,7 @@ namespace SalesSystem
 
         protected void chkfilter_CheckedChanged(object sender, EventArgs e)
         {
-            txtsearch.Enabled = !chkfilter.Checked;
+            txtsearch.Visible = !chkfilter.Checked; 
 
             ArticleAccess access = new ArticleAccess();
             list = access.listArticle();
@@ -56,8 +66,6 @@ namespace SalesSystem
             list = (List<Article>)Session["listarticle"];
             list = list.FindAll(x => x.Name.ToUpper().Contains(txtsearch.Text.ToUpper()) ||
             x.Description.ToUpper().Contains(txtsearch.Text.ToUpper()));
-
-
         }
 
         protected void ddlby_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,6 +95,8 @@ namespace SalesSystem
             try
             {
                 ArticleAccess access = new ArticleAccess();
+                list = (List<Article>)Session["listarticle"];
+
                 list = access.filter(ddlby.SelectedItem.ToString(), ddlCritery.SelectedItem.ToString(), txtFilterAdvanced.Text);
 
 

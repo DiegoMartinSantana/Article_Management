@@ -15,9 +15,11 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 </head>
+
 <body>
+
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -38,11 +40,14 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" >
-            <div class="container-fluid">
+
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+            <div class="container-fluid " style="font-size: x-large">
                 <img class="navbar-brand" style="width: 50px" src="https://i.pinimg.com/564x/77/e5/0c/77e50c04f9f512a456eb3e135a1c013b.jpg" alt="ShopIcon" />
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -56,9 +61,13 @@
                             <a class="nav-link" href="Favorites.aspx">My favorites</a>
                         </li>
                         <%} %>
+                        <%if (!Security.Validation.IsAdmin(Session["user"]))
+                            {
+                        %>
                         <li class="nav-item">
-                            <a class="nav-link" href="Wholesalers.aspx">Wholesalers</a>
+                            <a class="nav-link" href="Contact.aspx">Contact</a>
                         </li>
+                         <%} %>
                         <%if (Security.Validation.IsAdmin(Session["user"]))
                             {
                         %>
@@ -66,25 +75,34 @@
                         <li class="nav-item">
                             <a class="nav-link" href="Management.aspx">Management</a>
                         </li>
+
                         <%} %>
                     </ul>
+                    <div>
+                    </div>
                 </div>
             </div>
             <div class="container-fluid">
+                <div style="margin-left: 33%">
+                    <h1 class="navbar-text">Sales System</h1>
 
+                </div>
+            </div>
+
+
+            <div class="container-fluid" style="font-size: x-large">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
                     <li class="nav-item">
                         <% if (Session["user"] != null)
                             {
                                 //redirect to "profile"
                         %>
-                        <a href="Register.aspx" class="btn btn-outline-primary me-2">My Profile</a>
+                        <a href="Register.aspx" style="font-size: x-large" class="btn btn-outline-primary me-2">My Profile</a>
 
                         <%}
                             else
                             {  %>
-                        <a href="Login.aspx" class="btn btn-outline-info me-2">Login </a>
+                        <a href="Login.aspx" style="font-size: x-large" class="btn btn-outline-info me-2">Login </a>
 
                         <% } %>
                     </li>
@@ -92,12 +110,12 @@
                         <% if (Session["user"] != null)
                             {
                         %>
-                        <asp:Button Text="Logout" ID="btnlogout" runat="server" OnClick="btnlogout_Click" CssClass="btn btn-outline-danger" />
+                        <asp:Button Text="Logout" ID="btnlogout" Style="font-size: x-large" runat="server" OnClick="btnlogout_Click" CssClass="btn btn-outline-danger" />
 
                         <%}
                             else
                             {  %>
-                        <a href="Register.aspx" class="btn btn-outline-secondary me-2">Register </a>
+                        <a href="Register.aspx" class="btn btn-outline-secondary me-2" style="font-size: x-large">Register </a>
 
 
                         <% } %>
@@ -117,5 +135,8 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
+
+
+
 </body>
 </html>

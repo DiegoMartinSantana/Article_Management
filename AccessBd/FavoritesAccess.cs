@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Remoting.Messaging;
 namespace AccessBd
 {
     public  class FavoritesAccess
@@ -96,5 +97,28 @@ namespace AccessBd
 
         }
 
+        public void Delete(int idUser, int idDelete)
+        { 
+            BdAccess bdAccess = new BdAccess();
+
+            try
+            {
+                // delete From FAVORITOS where IdArticulo = 13 and IdUser = 2
+
+                bdAccess.setConsultation("Delete from Favoritos where IdArticulo =  @IdArt and IdUser =  @IdU");
+                bdAccess.setParameter("IdU", idUser);
+                bdAccess.setParameter("@IdArt", idDelete);
+                bdAccess.executeAccion();
+        
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally {
+                bdAccess.close();
+            }
+        }
     }
 }

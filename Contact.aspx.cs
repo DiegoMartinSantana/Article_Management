@@ -17,10 +17,9 @@ namespace SalesSystem
 
         protected void btnSendEmail_Click(object sender, EventArgs e)
         {
-            txtThanks.Enabled = true;
-            txtThanks.Visible = true;
+
             EmailService service = new EmailService();
-            service.buildEmail(txtEmailSend.Text, "Wholesalers", "All wholesale sales have a 15% discount, please respond with the list of items you wish to purchase. (Minimum of 5). Thanks for visiting our Web.");
+            service.buildEmailUser(txtEmailSend.Text, "Contact Sales System");
             try
             {
                 service.sendEmail();
@@ -30,9 +29,23 @@ namespace SalesSystem
 
                 Session.Add("error", ex);
                 Response.Redirect("error.aspx", false);
-            }       
+            }
 
-          
+            string AdminEmail = "diegomartinsa02@gmail.com";
+             
+            service.buildEmailAdmin(AdminEmail, "Sales system message ", "From : " + txtEmailSend.Text + " Message : " + txtEmailMessage.Text);
+
+            try
+            {
+                service.sendEmail();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex);
+                Response.Redirect("error.aspx", false);
+            }
+
         }
     }
 }

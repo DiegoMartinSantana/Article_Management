@@ -18,13 +18,13 @@
 
 
             <div class="mb-3  ">
-                <asp:Label Text="Cod Article : " class="form-control-lg" runat="server" />
+                <asp:Label Text="Cod Article : " class="form-control" runat="server" />
 
             </div>
             <div class="mb-3  ">
                 <asp:TextBox runat="server" class="form-control" ID="txtCodArticle" PlaceHolder="Enter Cod Article" />
             </div>
-            <div class="mb-3  form-control-lg">
+            <div class="mb-3  form-control">
                 <asp:Label Text="Name : " runat="server" />
 
             </div>
@@ -32,7 +32,7 @@
                 <asp:TextBox runat="server" ID="txtName" class="form-control" PlaceHolder="Enter Name " />
             </div>
             <div class="mb-3  ">
-                <asp:Label Text="Description : " class="form-control-lg" runat="server" />
+                <asp:Label Text="Description : " class="form-control" runat="server" />
 
             </div>
             <div class="mb-3">
@@ -42,7 +42,7 @@
                 {
             %>
             <div class="mb-3  ">
-                <asp:Label Text="Brand : " runat="server" class="form-control-lg" />
+                <asp:Label Text="Brand : " runat="server" class="form-control" />
 
             </div>
             <div class="mb-3 ">
@@ -50,7 +50,7 @@
             </div>
 
             <div class="mb-3 ">
-                <asp:Label Text="Category : " runat="server" class="form-control-lg" />
+                <asp:Label Text="Category : " runat="server" class="form-control" />
 
             </div>
             <div class="mb-3 ">
@@ -61,19 +61,19 @@
                 {
             %>
             <div class="mb-3 ">
-                <asp:Label Text="Category : " runat="server" class="form-control-lg" />
+                <asp:Label Text="Category : " runat="server" class="form-control" />
 
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 form-check" >
                 <asp:DropDownList runat="server" ID="ddlCategories">
                 </asp:DropDownList>
             </div>
             <div class="mb-3  ">
-                <asp:Label Text="Brand : " runat="server" class="form-control-lg" />
+                <asp:Label Text="Brand : " runat="server" class="form-control" />
 
             </div>
-            <div class="mb-3">
+            <div class="mb-3 form-check" >
                 <asp:DropDownList runat="server" ID="ddlBrands">
                 </asp:DropDownList>
             </div>
@@ -82,7 +82,7 @@
         </div>
         <div class="col form-control">
             <div class="mb-3 ">
-                <asp:Label Text="Price : " runat="server" class="form-control-lg" />
+                <asp:Label Text="Price : " runat="server" class="form-control" />
 
             </div>
             <div class="mb-3 ">
