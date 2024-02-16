@@ -31,7 +31,7 @@ namespace SalesSystem
                 {
 
                     Users user2 = (Users)Session["user"];
-                    lblPass.Text = "Pass";
+                    lblPass.Text = "Pass :";
 
                     txtemailuser.Text = user2.Email;
                     TxtName.Text = user2.Name;

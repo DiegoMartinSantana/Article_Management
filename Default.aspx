@@ -11,18 +11,28 @@
             width: 60%;
         }
 
-        .checkAdv {
+
+        .btnLigth {
+            border: 1.5px solid #96eafc;
+        }
+
+        .btnYellow {
+            border: 1.5px solid #FFC72C;
+        }
+        
+        .btnGreen {
+            border: 1.5px solid #ACE1AF;
         }
     </style>
 
     <main>
-        
+
         <div class="bg-light " style="margin-left: 4%; padding-left: 6%">
             <div class="row mb-0">
 
                 <div class="col mb-3">
 
-                    <div class="mb-3 form-control fields2" style="margin-left: 15px">
+                    <div class="mb-3 form-control fields2" style="margin-left: 15px; margin-top: 2.5%">
 
                         <asp:Label runat="server" ID="lblfilter"> Search Article by Name or Description :  </asp:Label>
 
@@ -103,7 +113,6 @@
 
 
             <%} %>
-            Style="margin-top: 10%; width: 100%; height: auto"
             <div class="row mb-3 row-cols-1 text-center " style="margin-left: 15px">
                 <%
                     if (list != null)
@@ -112,15 +121,15 @@
                         {
                 %>
 
-                <div class="card" style="width: 12rem; margin-right: 30px; margin-block-end: inherit; display: grid">
+                <div class="card "  style="width: 12rem; margin-right: 30px; margin-block-end: inherit; display: grid; border-radius: 22px">
 
                     <% 
 
                         imgArtCard.ImageUrl = Security.Helper.UrlLocal(Art.UrlImg);
 
 
-                    %><div style="border: 1px solid#ffffff; box-sizing: border-box; max-width: 352px; overflow: hidden">
-                        <asp:Image alt="Image Article" ID="imgArtCard" runat="server" Style="margin-top: 10%; width: 100%; height: auto" />
+                    %><div style="max-width: 352px; overflow: hidden">
+                        <asp:Image alt="Image Article" ID="imgArtCard" runat="server" Style="margin-top: 10%;padding-right : 5px; width: 100%; height: auto" />
 
                     </div>
                     <div class="card-body mb-3">
@@ -136,7 +145,7 @@
                             {  %>
 
                         <div class="mb-3">
-                            <a href="Default.aspx?id=<%: Art.Id %>" class="btn " style="background-color: #C0F9AB">Add to favorites </a>
+                            <a href="Default.aspx?id=<%: Art.Id %>" class="btn  btnGreen" style="background-color: #C0F9AB">Add to favorites </a>
 
                         </div>
                         <%}
@@ -145,13 +154,13 @@
                         %>
 
                         <div class="mb-3">
-                            <label class="btn" style="background-color: gold">Favorite</label>
+                            <img src="https://clipart-library.com/img/2184494.png" alt="Little Star Img " style="width:70px; height:auto"/>
 
                         </div>
 
                         <%} %>
                         <%} %>
-                        <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn " style="background-color: skyblue">Go to Article </a>
+                        <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn btnLigth" style="background-color: skyblue">Go to Article </a>
                     </div>
                 </div>
                 <%}

@@ -2,59 +2,65 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <style>
+        .imgBorder{
+            border-radius:22px;
+            border: 2px solid grey;
+        }
+     .txt{
+         max-width: 60%;margin-top:2.5%;
+     }
+    </style>
 
-
-    <div class="row">
+    <div class="row " style="margin-top:3%">
         <div class="col-md-6">
 
-            <div>
-                <p>Reqired fields : email and password</p>
-            </div>
+            
             <div class="mb-3">
 
                 <asp:Label ID="lblEmailUser" runat="server" Text="Email :" CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtemailuser" Style="max-width: 80%" PlaceHolder="Enter Email" TextMode="Email" />
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtemailuser"  PlaceHolder="Enter Email" TextMode="Email" />
             </div>
 
 
             <div class="mb-3">
 
                 <asp:Label ID="lblPass" runat="server" Text="Enter new Pass : " CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtPass" Style="max-width: 80%" PlaceHolder="Enter New Password" />
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtPass"  PlaceHolder="Enter New Password" />
             </div>
             <div class="mb-3">
 
                 <asp:Label runat="server" ID="lblRepeatPass" Text="Repeat Pass : " CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="txtRepeatPass" Style="max-width: 80%" PlaceHolder="Repeat Password " />
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtRepeatPass"  PlaceHolder="Repeat Password " />
             </div>
             <p style="color: red" runat="server" visible="false" id="pPasswords">The passwords are not Equals </p>
             <div class="mb-3">
                 <asp:Label ID="lblName" runat="server" Text="Name :" CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="TxtName" Style="max-width: 80%" PlaceHolder="Enter your Name" />
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="TxtName"  PlaceHolder="Enter your Name" />
             </div>
             <div class="mb-3">
                 <asp:Label ID="lblSurname" runat="server" Text="Surname :" CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="TxtSurname" Style="max-width: 80%" PlaceHolder="Enter your Surname" />
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="TxtSurname"  PlaceHolder="Enter your Surname" />
             </div>
 
         </div>
 
         <div class="col-md-6">
             <div class="mb-3">
-                <asp:Label ID="lblUrlImg" runat="server" Text="Url Image :" CssClass="form-label"></asp:Label>
+                <asp:Label ID="lblUrlImg" runat="server" Text="Url Image :" CssClass="form-label txt"></asp:Label>
 
             </div>
             <div class="mb-3">
                 <input type="file" id="fileUser1" runat="server" cssclass="form-control" />
             </div>
             <div class="mb-3">
-                <asp:Label ID="lblUrlLink" Text="Or enter your Url: " runat="server" CssClass="form-label" />
+                <asp:Label ID="lblUrlLink" Text="Or enter your Url: " runat="server" CssClass="form-label txt" />
             </div>
             <div class="mb-3">
-                <asp:TextBox runat="server" PlaceHolder="Enter Url " ID="txtUrlLink" CssClass="form-control" />
+                <asp:TextBox runat="server" PlaceHolder="Enter Url " ID="txtUrlLink" CssClass="form-control txt" />
             </div>
             <div class="mb-3">
-                <asp:Image runat="server" ID="txtImgUser1" CssClass="img-fluid mb-3" AlternateText="User Image" Style="max-width: 400px; height: auto" />
+                <asp:Image runat="server" ID="txtImgUser1" CssClass="img-fluid mb-3 imgBorder" AlternateText="User Image" Style="max-width: 400px;margin-top:3%; height: auto" />
 
             </div>
 

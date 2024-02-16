@@ -56,7 +56,7 @@ namespace SalesSystem
 
         protected void chkfilter_CheckedChanged(object sender, EventArgs e)
         {
-            txtsearch.Visible = !chkfilter.Checked; 
+            txtsearch.Enabled= !chkfilter.Checked; 
 
             ArticleAccess access = new ArticleAccess();
             list = access.listArticle();

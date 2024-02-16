@@ -27,9 +27,7 @@
 
         .textBox {
             max-width: 100%;
-            background-color: #616161;
-            border: #616161;
-            color: #BDBDBD;
+            
         }
 
 
@@ -53,21 +51,25 @@
             color: #9E9E9E !important
         }
 
+        .cardBg{
+            background-color : rgba(0, 0, 0, 0.03);
+            color: black;
+        }
         
     </style>
 
 
 
 
-    <div class="bg-light">
+    <div >
         <div class="container">
             <div class="row justify justify-content-center " style="margin-top:5%">
                 <div class="col-11 col-md-8 col-lg-6 col-xl-5">
 
-                    <div class="card bg-dark">
+                    <div class="card cardBg">
                         <div class="row mt-0">
                             <div class="col-md-12 ">
-                                <h4 class="">Contact Us</h4>
+                                <h4 >Contact Us</h4>
                                 <p>For wholesale sales or other inquiries, leave us your information and your question and we will contact you.</p>
                                 <div class="form-group row mb-3">
                                     <div class="col-md-12 mb-0">

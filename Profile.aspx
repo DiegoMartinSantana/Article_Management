@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="row">
+    <div class="row" >
         <div class="col-md-6">
 
 

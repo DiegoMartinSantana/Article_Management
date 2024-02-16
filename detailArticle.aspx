@@ -1,10 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="detailArticle.aspx.cs" Inherits="SalesSystem.detailArticle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        .imgSize {
+            height: auto;
+            max-height: 380px;
+            width: auto;
+            max-width: 400px;
+            border-radius: 22px;
+            border: 2px solid grey;
+        }
+
+        .sizeTxt {
+            width: 60%;
+            max-width: 100%;
+        }
+
+        .formCheck {
+            height: 33px;
+            max-width: 400px;
+            width: 200px;
+            margin-left: 75px;
+            text-align: center;
+        }
+    </style>
 
 
-
-    <div class="row" >
+    <div class="row">
 
         <%if (showChanges)
             {
@@ -14,79 +36,80 @@
         </div>
         <%} %>
 
-        <div class="col form-control">
+        <div class="col ">
 
 
             <div class="mb-3  ">
-                <asp:Label Text="Cod Article : " class="form-control" runat="server" />
+                <asp:Label Text="Cod Article : " runat="server" />
 
             </div>
             <div class="mb-3  ">
-                <asp:TextBox runat="server" class="form-control" ID="txtCodArticle" PlaceHolder="Enter Cod Article" />
+                <asp:TextBox runat="server" CssClass="sizeTxt form-control" ID="txtCodArticle" PlaceHolder="Enter Cod Article" />
             </div>
-            <div class="mb-3  form-control">
+            <div class="mb-3  ">
                 <asp:Label Text="Name : " runat="server" />
 
             </div>
             <div class="mb-3  ">
-                <asp:TextBox runat="server" ID="txtName" class="form-control" PlaceHolder="Enter Name " />
+                <asp:TextBox runat="server" ID="txtName" CssClass="form-control sizeTxt" PlaceHolder="Enter Name " />
             </div>
             <div class="mb-3  ">
-                <asp:Label Text="Description : " class="form-control" runat="server" />
+                <asp:Label Text="Description : " runat="server" />
 
             </div>
             <div class="mb-3">
-                <asp:TextBox runat="server" ID="txtDescription" class="form-control" PlaceHolder="Enter Description" />
+                <asp:TextBox runat="server" ID="txtDescription" class="form-control sizeTxt" PlaceHolder="Enter Description" />
             </div>
             <%if (!show && !showChanges)
                 {
             %>
             <div class="mb-3  ">
-                <asp:Label Text="Brand : " runat="server" class="form-control" />
+                <asp:Label Text="Brand : " runat="server" />
 
             </div>
             <div class="mb-3 ">
-                <asp:TextBox runat="server" ID="txtBrand" class="form-control" />
+                <asp:TextBox runat="server" ID="txtBrand" class="form-control sizeTxt" />
             </div>
 
             <div class="mb-3 ">
-                <asp:Label Text="Category : " runat="server" class="form-control" />
+                <asp:Label Text="Category : " runat="server" />
 
             </div>
             <div class="mb-3 ">
-                <asp:TextBox runat="server" ID="txtCategory" class="form-control" />
+                <asp:TextBox runat="server" ID="txtCategory" class="form-control sizeTxt" />
             </div>
             <%}
                 else
                 {
+
             %>
             <div class="mb-3 ">
-                <asp:Label Text="Category : " runat="server" class="form-control" />
+                <asp:Label Text="Category : " runat="server" />
 
             </div>
 
-            <div class="mb-3 form-check" >
-                <asp:DropDownList runat="server" ID="ddlCategories">
+            <div class="mb-3 ">
+                <asp:DropDownList runat="server" ID="ddlCategories" CssClass="formCheck">
                 </asp:DropDownList>
             </div>
             <div class="mb-3  ">
-                <asp:Label Text="Brand : " runat="server" class="form-control" />
+                <asp:Label Text="Brand : " runat="server" />
 
             </div>
-            <div class="mb-3 form-check" >
-                <asp:DropDownList runat="server" ID="ddlBrands">
+            <div class="mb-3 ">
+                <asp:DropDownList runat="server" ID="ddlBrands" CssClass="formCheck">
                 </asp:DropDownList>
             </div>
 
             <%} %>
         </div>
-        <div class="col form-control">
+        <div class="col ">
             <div class="mb-3 ">
-                <asp:Label Text="Price : " runat="server" class="form-control" />
+                <asp:Label Text="Price : " runat="server" />
 
             </div>
             <div class="mb-3 ">
-                <asp:TextBox runat="server" ID="txtPrice" class="form-control" PlaceHolder="Enter Price" />
+                <asp:TextBox runat="server" ID="txtPrice" class="form-control sizeTxt" PlaceHolder="Enter Price" />
             </div>
             <%if (!show)
                 {
@@ -96,7 +119,7 @@
                     <input type="file" id="fileArticle2" runat="server" cssclass="form-control" visible="false" />
                 </div>
 
-                
+
                 <div class="mb-3" runat="server" id="divUploadUrl" visible="false">
                     <p>Or upload image by Url  : </p>
                     <asp:TextBox runat="server" TextMode="Url" CssClass="form form-control" PlaceHolder="Enter Url" ID="txtUrl2" />
@@ -105,7 +128,7 @@
 
 
                 <div class="mb-3">
-                    <asp:Image ID="txtImg2" runat="server" class="form-control" />
+                    <asp:Image ID="txtImg2" CssClass="imgSize" runat="server" />
 
                 </div>
 
@@ -123,7 +146,7 @@
                 <asp:TextBox runat="server" TextMode="Url" CssClass="form form-control" PlaceHolder="Enter Url" ID="txtUrl" />
             </div>
             <div class="mb-3">
-                <asp:Image runat="server" ID="img300px" CssClass="img-fluid mb-3" Style="height: 300PX;" />
+                <asp:Image runat="server" CssClass="img-fluid mb-3 imgSize" Style="height: 300PX;" />
             </div>
             <%}%>
         </div>
@@ -137,34 +160,31 @@
         <div class="col">
             <div class="mb-3">
                 <asp:Button Text="Save Article" ID="btnsaveArticle" OnClick="btnsaveArticle_Click" CssClass="btn btn-primary" runat="server" />
+
+
             </div>
         </div>
         <%}
             else
             {
         %>
-        <div class="col">
-            <%if (!showChanges)
-                {
-            %>
-            <div class="mb-3">
-                <asp:Button Text="Modified Article " CssClass="btn btn-secondary" ID="btnEdit" OnClick="btnEdit_Click" runat="server" />
-            </div>
-            <%}
-                else
-                {  %>
-            <div class="mb-3">
-                <asp:Button Text="Save Changes " CssClass="btn btn-primary" ID="btnSaveChanges" OnClick="btnSaveChanges_Click" runat="server" />
-            </div>
-            <%} %>
+
+        <%if (!showChanges)
+            {
+        %>
+        <div class="mb-3" style="margin-top: 2%">
+            <asp:Button Text="Modified Article " CssClass="btn btn-secondary" ID="btnEdit" OnClick="btnEdit_Click" runat="server" />
+            <asp:Button Text="Delete Article" CssClass="btn btn-danger" ID="btnDelete" OnClick="btnDelete_Click" runat="server" Style="margin-left:2%" />
         </div>
-        <div class="col">
-            <div class="mb-3">
-                <asp:Button Text="Delete Article" CssClass="btn btn-danger" ID="btnDelete" OnClick="btnDelete_Click" runat="server" />
-            </div>
+        <%}
+            else
+            {  %>
+        <div class="mb-3">
+            <asp:Button Text="Save Changes " CssClass="btn btn-primary" ID="btnSaveChanges" OnClick="btnSaveChanges_Click" runat="server" />
         </div>
         <%} %>
     </div>
 
 
+    <%} %>
 </asp:Content>

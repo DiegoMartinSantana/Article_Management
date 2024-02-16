@@ -11,10 +11,10 @@ using Security;
 namespace SalesSystem
 {
     public partial class Favourites : System.Web.UI.Page
-    {
+    {   
 
         public List<Article> listArt = new List<Article>();
-
+        public bool first = true;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Validation.Login(Session["user"]))

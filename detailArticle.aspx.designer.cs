@@ -141,15 +141,6 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.TextBox txtUrl;
 
         /// <summary>
-        /// Control img300px.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image img300px;
-
-        /// <summary>
         /// Control btnsaveArticle.
         /// </summary>
         /// <remarks>
@@ -168,15 +159,6 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.Button btnEdit;
 
         /// <summary>
-        /// Control btnSaveChanges.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveChanges;
-
-        /// <summary>
         /// Control btnDelete.
         /// </summary>
         /// <remarks>
@@ -184,5 +166,14 @@ namespace SalesSystem
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
+
+        /// <summary>
+        /// Control btnSaveChanges.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveChanges;
     }
 }
