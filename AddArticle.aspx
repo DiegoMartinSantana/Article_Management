@@ -15,11 +15,11 @@
 
     <div class="row">
         <div class="mb-3 " style="border: solid; border-color: dodgerblue">
-            <h4 style="text-align:center">Complete the Fields </h4>
+            <h4 style="text-align: center">Complete the Fields </h4>
         </div>
     </div>
 
-    <div class="row " style="margin-top:1%">
+    <div class="row " style="margin-top: 1%">
 
         <div class="col ">
 
@@ -29,7 +29,9 @@
 
             </div>
             <div class="mb-3  ">
-                <asp:TextBox runat="server" CssClass="sizeTxt form-control" ID="txtCodArticle"  PlaceHolder="Enter Cod Article" />
+                <asp:TextBox runat="server" CssClass="sizeTxt form-control" ID="txtCodArticle" PlaceHolder="Enter Cod Article" />
+                <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Required" ControlToValidate="txtCodArticle" runat="server" />
+                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Less than 8 characters" ControlToValidate="txtCodArticle" ValidationExpression="^[A-Za-z\d]{1,7}$" runat="server" />
             </div>
             <div class="mb-3 margin ">
                 <asp:Label Text="Name : " runat="server" />
@@ -37,6 +39,8 @@
             </div>
             <div class="mb-3  ">
                 <asp:TextBox runat="server" ID="txtName" CssClass="form-control sizeTxt" PlaceHolder="Enter Name " />
+                <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Required" ControlToValidate="txtName" runat="server" />
+                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Only letters " ControlToValidate="txtName" ValidationExpression="^[A-Za-z\s]+$" runat="server" />
             </div>
             <div class="mb-3  margin">
                 <asp:Label Text="Description : " runat="server" />
@@ -44,9 +48,12 @@
             </div>
             <div class="mb-3 ">
                 <asp:TextBox runat="server" ID="txtDescription" class="form-control sizeTxt" PlaceHolder="Enter Description" />
+                <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Required" ControlToValidate="txtDescription" runat="server" />
+                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Minimum 20 characters" ControlToValidate="txtDescription" ValidationExpression="^^.{20,}$" runat="server" />
+
             </div>
 
-            <div class="mb-3 margin ">
+            <div class="mb-3  ">
                 <asp:Label Text="Category : " runat="server" />
 
             </div>
@@ -54,6 +61,7 @@
             <div class="mb-3 ">
                 <asp:DropDownList runat="server" ID="ddlCategories" CssClass="formCheck">
                 </asp:DropDownList>
+
             </div>
             <div class="mb-3 margin">
                 <asp:Label Text="Brand : " runat="server" />
@@ -62,6 +70,7 @@
             <div class="mb-3 ">
                 <asp:DropDownList runat="server" ID="ddlBrands" CssClass="formCheck">
                 </asp:DropDownList>
+
             </div>
 
         </div>
@@ -69,20 +78,25 @@
             <div class="mb-3 ">
                 <asp:Label Text="Price : " runat="server" />
 
+
             </div>
             <div class="mb-3 ">
                 <asp:TextBox runat="server" ID="txtPrice" class="form-control sizeTxt" PlaceHolder="Enter Price" />
+                <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Required" ControlToValidate="txtPrice" runat="server" />
+                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Only numbers and greater than 0 " ControlToValidate="txtPrice" ValidationExpression="^\d+(\.\d+)?$" runat="server" />
             </div>
 
             <div class="mb-3">
                 <div class="mb-3">
-                    <input type="file" id="fileArticle" runat="server" cssclass="form-control" />
+                    <input style="margin-top: 2%" type="file" id="fileArticle" runat="server" cssclass="form-control" />
                 </div>
 
-
-                <div class="mb-3" runat="server" id="divUploadUrl">
+                <div class="mb-3" runat="server" style="margin-top: 2%" id="divUploadUrl">
                     <p>Or upload image by Url  : </p>
-                    <asp:TextBox runat="server" TextMode="Url" CssClass="form form-control sizeTxt" PlaceHolder="Enter Url" ID="txtUrl2" />
+                    <asp:TextBox Style="margin-top: 2%" runat="server" TextMode="Url" CssClass="form form-control sizeTxt" PlaceHolder="Enter Url" ID="txtUrl2">
+                    </asp:TextBox>
+                    <p runat="server" id="pImgRequired" style="color:red" visible="false">Image required by url or by file </p>
+
                 </div>
 
             </div>
@@ -96,7 +110,7 @@
 
             <div class="mb-3">
                 <a class="btn btn-secondary" href="Management.aspx">Cancel </a>
-                <asp:Button Text="Upload Article "  style="margin-left:3%" CssClass="btn btn-primary" ID="btnAddArt" OnClick="btnAddArt_Click" runat="server" />
+                <asp:Button Text="Upload Article " Style="margin-left: 3%" CssClass="btn btn-primary" ID="btnAddArt" OnClick="btnAddArt_Click" runat="server" />
             </div>
         </div>
     </div>

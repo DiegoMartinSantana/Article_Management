@@ -3,41 +3,58 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <style>
-        
-     .txt{
-         max-width: 60%;margin-top:2.5%;
-     }
+        .txt {
+            max-width: 60%;
+            margin-top: 2.5%;
+        }
     </style>
 
-    <div class="row " style="margin-top:3%">
+    <div class="row " style="margin-top: 3%">
         <div class="col-md-6">
 
-            
+
             <div class="mb-3">
 
                 <asp:Label ID="lblEmailUser" runat="server" Text="Email :" CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtemailuser"  PlaceHolder="Enter Email" TextMode="Email" />
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtemailuser" PlaceHolder="Enter Email" TextMode="Email" />
+                <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Email Required" ControlToValidate="txtemailuser" runat="server"  />
+
             </div>
-
-
-            <div class="mb-3">
+            <div class="mb-0">
 
                 <asp:Label ID="lblPass" runat="server" Text="Enter new Pass : " CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtPass"  PlaceHolder="Enter New Password" />
+
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtPass" PlaceHolder="Enter New Password" />
+                <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Password Required" ControlToValidate="txtPass" runat="server" />
+                <div>
+                    <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Minimum eight characters, at least one letter , one number and not simbols."
+                        ControlToValidate="txtPass" 
+                        ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" runat="server" />
+                </div>
             </div>
+
+
             <div class="mb-3">
 
                 <asp:Label runat="server" ID="lblRepeatPass" Text="Repeat Pass : " CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtRepeatPass"  PlaceHolder="Repeat Password " />
+
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtRepeatPass" PlaceHolder="Repeat Password " />
+                
+
             </div>
             <p style="color: red" runat="server" visible="false" id="pPasswords">The passwords are not Equals </p>
+
             <div class="mb-3">
                 <asp:Label ID="lblName" runat="server" Text="Name :" CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control txt" ID="TxtName"  PlaceHolder="Enter your Name" />
+
+
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="TxtName" PlaceHolder="Enter your Name" />
+                <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Name Required" ControlToValidate="TxtName" runat="server" />
+
             </div>
             <div class="mb-3">
                 <asp:Label ID="lblSurname" runat="server" Text="Surname :" CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control txt" ID="TxtSurname"  PlaceHolder="Enter your Surname" />
+                <asp:TextBox runat="server" CssClass="form-control txt" ID="TxtSurname" PlaceHolder="Enter your Surname" />
             </div>
 
         </div>
@@ -57,13 +74,13 @@
                 <asp:TextBox runat="server" PlaceHolder="Enter Url " ID="txtUrlLink" CssClass="form-control txt" />
             </div>
             <div class="mb-3">
-                <asp:Image runat="server" ID="txtImgUser1" CssClass="img-fluid mb-3 imgBorder" AlternateText="User Image" Style="max-width: 400px;margin-top:3%; height: auto" />
+                <asp:Image runat="server" ID="txtImgUser1" CssClass="img-fluid mb-3 imgBorder" AlternateText="User Image" Style="max-width: 400px; margin-top: 3%; height: auto" />
 
             </div>
 
         </div>
     </div>
-    <div class="row">
+    <div class="row" >
         <div class="col-md-6">
             <%if (Security.Validation.Login(Session["user"]))
                 {
@@ -80,7 +97,7 @@
             <%}
                 else
                 {  %>
-            <asp:Button Text="Create User" ID="btnCreate" OnClick="btnCreate_Click" CssClass="btn btn-primary" runat="server" AutoPostback="false" />
+            <asp:Button Text="Create User" ID="btnCreate" OnClick="btnCreate_Click" CssClass="btn btn-primary" runat="server" AutoPostback="false" Style="margin-top: 2%" />
 
             <%
                 }%>

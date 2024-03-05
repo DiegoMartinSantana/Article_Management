@@ -25,6 +25,7 @@ namespace SalesSystem
             if (!IsPostBack && Changes != 1 && Changes != 2)
             {
 
+
                 txtImgUser1.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
 
                 if (Security.Validation.Login(Session["user"]))
@@ -41,7 +42,7 @@ namespace SalesSystem
                     txtemailuser.ReadOnly = true;
                     txtPass.ReadOnly = true;
                     fileUser1.Visible = false;
-                    lblUrlImg.Text = "Profile Image";
+                    lblUrlImg.Text = "Profile Image : ";
                     lblUrlLink.Visible = false;
                     txtUrlLink.Visible = false;
                     txtRepeatPass.Visible = false;
@@ -108,48 +109,33 @@ namespace SalesSystem
                 Users user2 = (Users)Session["user"];
 
 
-                txtPass.Text = user2.Password;
-                txtRepeatPass.Text = user2.Password;
                 txtemailuser.Text = user2.Email;
-                TxtName.Text = user2.Name;
-                TxtSurname.Text = user2.Surname;
 
-
-
-
+                if (!string.IsNullOrEmpty(user2.Name))
+                {
+                    TxtName.Text = user2.Name;
+                }
+                if (!string.IsNullOrEmpty(user2.Surname))
+                {
+                    TxtSurname.Text = user2.Surname;
+                }
 
                 TxtName.ReadOnly = false;
                 TxtSurname.ReadOnly = false;
 
                 txtPass.ReadOnly = false;
 
-                if (!string.IsNullOrEmpty(user2.UrlImgProfile))
-                {
-                    if (user2.UrlImgProfile.Contains("IdUser_"))
-                    {
-                        txtImgUser1.ImageUrl = "~/Images/Imgs_Profile/" + user2.UrlImgProfile;
-                    }
-                    else
-                    {
-                        txtImgUser1.ImageUrl = user2.UrlImgProfile;
-                    }
-                }
-                else
-                {
-                    txtImgUser1.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
-                }
+                txtImgUser1.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
 
             }
 
         }
 
-
-
-
         protected void btnCreate_Click(object sender, EventArgs e)
         {
+            Page.Validate();
 
-            if (string.IsNullOrEmpty(txtemailuser.Text) || string.IsNullOrEmpty(txtPass.Text))
+            if (!Page.IsValid)
             {
                 return;
             }
@@ -182,9 +168,25 @@ namespace SalesSystem
 
                     user.Id = access.insert(user);
                     Session.Add("user", user);
+                    Response.Redirect("Default.aspx", false);
+
                 }
                 else
                 {
+                    user.Email = txtemailuser.Text;
+
+                    user.IsAdmin = false;
+                    if (!string.IsNullOrEmpty(TxtSurname.Text))
+                    {
+                        user.Surname = TxtSurname.Text;
+                    }
+                    if (!string.IsNullOrEmpty(TxtName.Text))
+                    {
+                        user.Name = TxtName.Text;
+                    }
+
+                    Session.Add("user", user);
+
                     int changes = 2;
                     Response.Redirect("Register.aspx?changes=" + changes, false);
 
@@ -196,9 +198,8 @@ namespace SalesSystem
                 Session.Add("error", ex);
                 Response.Redirect("error.aspx", false);
             }
-            
-                Response.Redirect("Default.aspx" ,false);
-            
+
+
 
         }
 

@@ -26,23 +26,25 @@ namespace SalesSystem
                 txtRepeatPass.Text = user.Password;
                 TxtName.Text = user.Name;
                 TxtSurname.Text = user.Surname;
-
-                if (user.UrlImgProfile.Contains("IdUser_"))
+                if (!string.IsNullOrEmpty(user.UrlImgProfile))
                 {
-                    if (string.IsNullOrEmpty(user.UrlImgProfile))
+                    if (user.UrlImgProfile.Contains("IdUser_"))
                     {
-                        txtImgUser2.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
+                        if (string.IsNullOrEmpty(user.UrlImgProfile))
+                        {
+                            txtImgUser2.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
+
+                        }
+                        else
+                        {
+                            txtImgUser2.ImageUrl = "~/Images/Imgs_Profile/" + user.UrlImgProfile;
+                        }
+                    }
+                    else if (!string.IsNullOrEmpty(user.UrlImgProfile))
+                    {
+                        txtImgUser2.ImageUrl = user.UrlImgProfile;
 
                     }
-                    else
-                    {
-                        txtImgUser2.ImageUrl = "~/Images/Imgs_Profile/" + user.UrlImgProfile;
-                    }
-                }
-                else if (!string.IsNullOrEmpty(user.UrlImgProfile))
-                {
-                    txtImgUser2.ImageUrl = user.UrlImgProfile;
-
                 }
                 else
                 {
@@ -87,7 +89,7 @@ namespace SalesSystem
 
                 }
 
-                pPasswords.Visible = true;
+                pPasswordWrong.Visible = true;
 
             }
 
@@ -95,6 +97,14 @@ namespace SalesSystem
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
+
+
             Users user = (Users)Session["user"];
             if (!string.IsNullOrEmpty(txtPass.Text))
             {

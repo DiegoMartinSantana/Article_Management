@@ -20,6 +20,16 @@ namespace SalesSystem
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            if (!(txtEmail.Text == "admin@admin.com") && !(txtEmail.Text== "user@user.com"))
+            {
+                Page.Validate();
+                if (!Page.IsValid)
+                {
+                    return;
+                }
+            }
+
+
             UsersAccess access = new UsersAccess();
             Users user = new Users();
 
@@ -37,19 +47,15 @@ namespace SalesSystem
                 {
                     txtWrong.Visible = true;
                 }
-                
+
             }
 
-        
             catch (Exception ex)
             {
-
                 Session.Add("error", ex);
                 Response.Redirect("error.aspx", false);
-
             }
 
-
-}
+        }
     }
 }

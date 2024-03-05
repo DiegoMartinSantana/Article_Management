@@ -94,9 +94,15 @@
         <div class="mb-3" style="margin-top: 2%">
             <asp:Button Text="Edit Article " CssClass="btn btn-secondary" ID="btnEdit" OnClick="btnEdit_Click" runat="server" />
             <asp:Button Text="Delete Article" CssClass="btn btn-danger" ID="btnDelete" OnClick="btnDelete_Click" runat="server" Style="margin-left:2%" />
+
+
+            <asp:Button Visible="false" Text="Cancel Delete" CssClass="btn btn-outline-dark" ID="btnCancelDelete" OnClick="btnCancelDelete_Click" runat="server" Style="margin-left:5%" />
+
+            <asp:Button Visible="false" Text="Confirm Delete" CssClass="btn btn-outline-danger" ID="btnConfirm" OnClick="btnConfirm_Click" runat="server" Style="margin-left:5%" />
         </div>
+
+        
         <%} %>
-            
     </div>
         
 

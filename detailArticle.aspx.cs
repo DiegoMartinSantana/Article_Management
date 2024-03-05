@@ -4,6 +4,7 @@ using Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -73,6 +74,30 @@ namespace SalesSystem
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
+            btnCancelDelete.Visible = true;
+            btnConfirm.Visible = true;
+
+        }
+      
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            int idart;
+            if (Request.QueryString["idShow"] != null)
+            {
+                idart = int.Parse(Request.QueryString["idShow"].ToString());
+            }
+            else
+            {
+                idart = int.Parse(Request.QueryString["id"].ToString());
+            }
+            Response.Redirect("EditArticle.aspx?id="+idart, false);
+
+
+        }
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
             ArticleAccess access = new ArticleAccess();
             int id;
             if (Request.QueryString["id"] != null)
@@ -95,28 +120,14 @@ namespace SalesSystem
                 Session.Add("error", ex);
                 Response.Redirect("Error.aspx", false);
             }
-            
+
             Response.Redirect("Management.aspx");
         }
-      
 
-        protected void btnEdit_Click(object sender, EventArgs e)
+        protected void btnCancelDelete_Click(object sender, EventArgs e)
         {
-            int idart;
-            if (Request.QueryString["idShow"] != null)
-            {
-                idart = int.Parse(Request.QueryString["idShow"].ToString());
-            }
-            else
-            {
-                idart = int.Parse(Request.QueryString["id"].ToString());
-            }
-            Response.Redirect("EditArticle.aspx?id="+idart, false);
-
-
+            btnCancelDelete.Visible = false;
+            btnConfirm.Visible = false;
         }
-
-       
-
     }
 }

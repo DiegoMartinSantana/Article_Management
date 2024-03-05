@@ -69,13 +69,13 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.TextBox txtRepeatPass;
 
         /// <summary>
-        /// Control pPasswords.
+        /// Control pPasswordWrong.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pPasswords;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pPasswordWrong;
 
         /// <summary>
         /// Control lblName.

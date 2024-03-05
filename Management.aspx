@@ -5,8 +5,6 @@
 
         .borderInf{
             border: solid 1px grey;
-           
-
         }
     </style>
     <div class="row">
@@ -69,7 +67,7 @@
 
                     <li>
                         <h4>Delete  </h4>
-                        <p>If you want delete some article, select the item and go to show More, press Delete. (This action will delete the item forever. You will need to upload it again to recover it).</p>
+                        <p>If you want delete some article, select the item and go to show , press Delete. (This action will delete the item forever. You will need to upload it again to recover it).</p>
                     </li>
                 </ul>
             </div>

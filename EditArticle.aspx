@@ -18,7 +18,7 @@
 
 
         <div class="mb-3 " style="border: solid; border-color: darkred">
-            <h3>Edit you Article : </h3>
+            <h3 style="text-align:center">Edit you Article : </h3>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
 
             </div>
             <div class="mb-3  ">
-                <asp:TextBox runat="server" CssClass="sizeTxt form-control" ID="txtCodArticle" Enabled="false" />
+                <asp:TextBox runat="server" CssClass="sizeTxt form-control" ID="txtCodArticle"  />
             </div>
             <div class="mb-3 margin ">
                 <asp:Label Text="Name : " runat="server" />

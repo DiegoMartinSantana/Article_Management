@@ -26,15 +26,31 @@ namespace SalesSystem
             if (Request.QueryString["id"] != null)
             {
 
+                 try
+                {
+                    ddlCategories.DataSource = Helper.Categories();
+                    ddlCategories.DataValueField = "Id";
+                    ddlCategories.DataTextField = "Description";
+                    ddlCategories.DataBind();
 
+                    ddlBrands.DataSource = Helper.Brands();
+                    ddlBrands.DataValueField = "Id";
+                    ddlBrands.DataTextField = "Description";
+                    ddlBrands.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    Session.Add("error", ex);
+                    Response.Redirect("error.aspx", false);
+                }
                
                 ArticleAccess access = new ArticleAccess();
 
-                var idreceived = Request.QueryString["idShow"] != null ? Request.QueryString["idShow"].ToString() : "";
+                var idreceived = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
 
 
                 var art = access.listArticle(idreceived)[0]; //only one value returned
-
+                txtCodArticle.Text = art.CodArticle;
                 txtName.Text = art.Name;
                 txtPrice.Text = art.Price.ToString();
                 txtDescription.Text = art.Description;
@@ -52,23 +68,7 @@ namespace SalesSystem
                 ddlCategories.SelectedIndex = art.category.Id;
                 ddlBrands.SelectedIndex = art.brand.Id;
 
-                try
-                {
-                    ddlCategories.DataSource = Helper.Categories();
-                    ddlCategories.DataValueField = "Id";
-                    ddlCategories.DataTextField = "Description";
-                    ddlCategories.DataBind();
-
-                    ddlBrands.DataSource = Helper.Brands();
-                    ddlBrands.DataValueField = "Id";
-                    ddlBrands.DataTextField = "Description";
-                    ddlBrands.DataBind();
-                }
-                catch (Exception ex)
-                {
-                    Session.Add("error", ex);
-                    Response.Redirect("error.aspx", false);
-                }
+               
             }
             else
             {
