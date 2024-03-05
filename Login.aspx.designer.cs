@@ -33,6 +33,15 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.TextBox txtPass;
 
         /// <summary>
+        /// Control txtWrong.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtWrong;
+
+        /// <summary>
         /// Control btnSubmit.
         /// </summary>
         /// <remarks>

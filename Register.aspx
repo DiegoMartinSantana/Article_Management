@@ -3,10 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <style>
-        .imgBorder{
-            border-radius:22px;
-            border: 2px solid grey;
-        }
+        
      .txt{
          max-width: 60%;margin-top:2.5%;
      }

@@ -35,7 +35,7 @@ namespace SalesSystem
                 }
                 else
                 {
-                    //show label with no user found
+                    txtWrong.Visible = true;
                 }
                 
             }

@@ -16,6 +16,12 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+    <link href="Scripts/StyleSheetGlobal.css" rel="stylesheet" />
+    <style>
+     
+       
+
+    </style>
 </head>
 
 <body>
@@ -67,7 +73,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="Contact.aspx">Contact</a>
                         </li>
-                         <%} %>
+                        <%} %>
                         <%if (Security.Validation.IsAdmin(Session["user"]))
                             {
                         %>
@@ -84,7 +90,7 @@
             </div>
             <div class="container-fluid">
                 <div style="margin-left: 33%">
-                    <h1 class="navbar-text">Sales System</h1>
+                    <h1 style="color: lightgray" class="navbar-text">Sales System</h1>
 
                 </div>
             </div>
@@ -92,12 +98,14 @@
 
             <div class="container-fluid" style="font-size: x-large">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+
                     <li class="nav-item">
                         <% if (Session["user"] != null)
                             {
                                 //redirect to "profile"
                         %>
-                        <a href="Register.aspx" style="font-size: x-large" class="btn btn-outline-primary me-2">My Profile</a>
+                        <a href="Register.aspx" style="font-size: x-large; " class="btn btn-outline-primary me-2">My Profile</a>
 
                         <%}
                             else
@@ -107,22 +115,20 @@
                         <% } %>
                     </li>
                     <li class="nav-item">
-                        <% if (Session["user"] != null)
+                        <% if (Session["user"] == null)
                             {
                         %>
-                        <asp:Button Text="Logout" ID="btnlogout" Style="font-size: x-large" runat="server" OnClick="btnlogout_Click" CssClass="btn btn-outline-danger" />
-
-                        <%}
-                            else
-                            {  %>
                         <a href="Register.aspx" class="btn btn-outline-secondary me-2" style="font-size: x-large">Register </a>
 
 
+                        <%}
+                        else
+                        {  %>
+                        <asp:Button Text="Logout" ID="btnlogout" Style="font-size: x-large" runat="server" OnClick="btnlogout_Click" CssClass="btn btn-outline-danger" />
+
                         <% } %>
                     </li>
-
                 </ul>
-
             </div>
 
         </nav>

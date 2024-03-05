@@ -16,6 +16,9 @@
                             <asp:TextBox type="password" class="form-control" id="txtPass" placeholder="Enter your Password" required="true" runat="server"/>
 
                         </div>
+                    <div class="mb-3">
+                        <asp:Label Text="Incorrect Email or Password " Style="color:red" ID="txtWrong" Visible="false" CssClass="form-label" runat="server" />
+                    </div>
                     <asp:Button Text="Submit" runat="server" class="btn btn-primary" OnClick="btnSubmit_Click" ID="btnSubmit"/>
                 </div>
                 </div>

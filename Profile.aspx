@@ -50,7 +50,7 @@
                 <asp:TextBox runat="server" PlaceHolder="Enter Url " ID="txtUrlLink2" CssClass="form-control" />
             </div>
             <div class="mb-3">
-                <asp:Image runat="server" ID="txtImgUser2" CssClass="img-fluid mb-3" AlternateText="User Image" Style="max-width: 400px; height: auto" />
+                <asp:Image runat="server" ID="txtImgUser2" CssClass="img-fluid mb-3 imgBorder" AlternateText="User Image" Style="max-width: 400px; height: auto;margin-top:3%" />
 
             </div>
 

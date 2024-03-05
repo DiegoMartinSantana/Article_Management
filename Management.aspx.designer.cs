@@ -15,6 +15,15 @@ namespace SalesSystem
     {
 
         /// <summary>
+        /// Control btnHorWork.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnHorWork;
+
+        /// <summary>
         /// Control dvgArticles.
         /// </summary>
         /// <remarks>
@@ -24,15 +33,6 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.GridView dvgArticles;
 
         /// <summary>
-        /// Control lblAdded.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdded;
-
-        /// <summary>
         /// Control btnAddArticle.
         /// </summary>
         /// <remarks>
@@ -40,5 +40,14 @@ namespace SalesSystem
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddArticle;
+
+        /// <summary>
+        /// Control divInformation.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divInformation;
     }
 }

@@ -11,18 +11,7 @@
             width: 60%;
         }
 
-
-        .btnLigth {
-            border: 1.5px solid #96eafc;
-        }
-
-        .btnYellow {
-            border: 1.5px solid #FFC72C;
-        }
-        
-        .btnGreen {
-            border: 1.5px solid #ACE1AF;
-        }
+       
     </style>
 
     <main>

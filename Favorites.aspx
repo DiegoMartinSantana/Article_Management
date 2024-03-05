@@ -8,14 +8,7 @@
             margin-right: 5%
         }
 
-        .btnLigth {
-            border: 1.5px solid #96eafc;
-        }
-
-        .btnGreen {
-            border: 1.5px solid #ACE1AF;
-        }
-
+     
         .cardsCount4 {
             margin-left: 15%;
         }

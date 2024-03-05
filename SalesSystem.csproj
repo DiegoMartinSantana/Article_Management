@@ -158,8 +158,11 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\StyleSheetGlobal.css" />
     <Content Include="Validate.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="EditArticle.aspx" />
+    <Content Include="AddArticle.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -297,6 +300,20 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditArticle.aspx.cs">
+      <DependentUpon>EditArticle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditArticle.aspx.designer.cs">
+      <DependentUpon>EditArticle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddArticle.aspx.cs">
+      <DependentUpon>AddArticle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddArticle.aspx.designer.cs">
+      <DependentUpon>AddArticle.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

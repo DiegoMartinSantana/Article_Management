@@ -1,0 +1,26 @@
+﻿.imgSize {
+    height: auto;
+    max-height: 380px;
+    width: auto;
+    max-width: 400px;
+    border-radius: 22px;
+    border: 1px solid grey;
+}
+.btnLigth {
+    border: 1.5px solid #96eafc;
+}
+
+.btnGreen {
+    border: 1.5px solid #ACE1AF;
+}
+.btnLigth {
+    border: 1.5px solid #96eafc;
+}
+
+.btnYellow {
+    border: 1.5px solid #FFC72C;
+}
+.imgBorder {
+    border-radius: 22px;
+    border: 2px solid grey;
+}

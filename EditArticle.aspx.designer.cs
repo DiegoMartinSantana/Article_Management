@@ -11,7 +11,7 @@ namespace SalesSystem
 {
 
 
-    public partial class detailArticle
+    public partial class WebForm1
     {
 
         /// <summary>
@@ -42,22 +42,22 @@ namespace SalesSystem
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
 
         /// <summary>
-        /// Control txtBrand.
+        /// Control ddlCategories.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBrand;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategories;
 
         /// <summary>
-        /// Control txtCategory.
+        /// Control ddlBrands.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategory;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBrands;
 
         /// <summary>
         /// Control txtPrice.
@@ -78,39 +78,39 @@ namespace SalesSystem
         protected global::System.Web.UI.HtmlControls.HtmlInputFile fileArticle;
 
         /// <summary>
-        /// Control txtUrl.
+        /// Control divUploadUrl.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUrl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUploadUrl;
 
         /// <summary>
-        /// Control txtImg.
+        /// Control txtUrl2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image txtImg;
+        protected global::System.Web.UI.WebControls.TextBox txtUrl2;
 
         /// <summary>
-        /// Control btnEdit.
+        /// Control txtImg2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEdit;
+        protected global::System.Web.UI.WebControls.Image txtImg2;
 
         /// <summary>
-        /// Control btnDelete.
+        /// Control btnSaveChanges.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelete;
+        protected global::System.Web.UI.WebControls.Button btnSaveChanges;
     }
 }
