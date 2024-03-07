@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddArticle.aspx.cs" Inherits="SalesSystem.WebForm2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
     <style>
         .margin {
             margin-top: 6%;
@@ -59,7 +58,7 @@
             </div>
 
             <div class="mb-3 ">
-                <asp:DropDownList runat="server" ID="ddlCategories" CssClass="formCheck">
+                <asp:DropDownList runat="server" ID="ddlCategories" CssClass="formCheck dll">
                 </asp:DropDownList>
 
             </div>
@@ -68,7 +67,7 @@
 
             </div>
             <div class="mb-3 ">
-                <asp:DropDownList runat="server" ID="ddlBrands" CssClass="formCheck">
+                <asp:DropDownList runat="server" ID="ddlBrands" CssClass="formCheck dll">
                 </asp:DropDownList>
 
             </div>

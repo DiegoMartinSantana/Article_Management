@@ -16,72 +16,70 @@ namespace SalesSystem
         {
 
 
-             if (!Security.Validation.IsAdmin(Session["user"]))
-              {
-                  Response.Redirect("Login.aspx",false);
-              }
-           
+            if (!Security.Validation.IsAdmin(Session["user"]))
+            {
+                Response.Redirect("Login.aspx", false);
+            }
 
-
-            if (Request.QueryString["id"] != null)
+            if (!IsPostBack)
             {
 
-                 try
+                if (Request.QueryString["id"] != null)
                 {
-                    ddlCategories.DataSource = Helper.Categories();
-                    ddlCategories.DataValueField = "Id";
-                    ddlCategories.DataTextField = "Description";
-                    ddlCategories.DataBind();
 
-                    ddlBrands.DataSource = Helper.Brands();
-                    ddlBrands.DataValueField = "Id";
-                    ddlBrands.DataTextField = "Description";
-                    ddlBrands.DataBind();
-                }
-                catch (Exception ex)
-                {
-                    Session.Add("error", ex);
-                    Response.Redirect("error.aspx", false);
-                }
-               
-                ArticleAccess access = new ArticleAccess();
+                    try
+                    {
+                        ddlCategories.DataSource = Helper.Categories();
+                        ddlCategories.DataValueField = "Id";
+                        ddlCategories.DataTextField = "Description";
+                        ddlCategories.DataBind();
 
-                var idreceived = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                        ddlBrands.DataSource = Helper.Brands();
+                        ddlBrands.DataValueField = "Id";
+                        ddlBrands.DataTextField = "Description";
+                        ddlBrands.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        Session.Add("error", ex);
+                        Response.Redirect("error.aspx", false);
+                    }
+
+                    ArticleAccess access = new ArticleAccess();
+
+                    var idreceived = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
 
 
-                var art = access.listArticle(idreceived)[0]; //only one value returned
-                txtCodArticle.Text = art.CodArticle;
-                txtName.Text = art.Name;
-                txtPrice.Text = art.Price.ToString();
-                txtDescription.Text = art.Description;
-                if (!string.IsNullOrEmpty(art.UrlImg))
-                {
-                    txtImg2.ImageUrl = Security.Helper.UrlLocal(art.UrlImg);
+                    var art = access.listArticle(idreceived)[0]; //only one value returned
+                    txtCurrentCat.Text = art.category.Description;
+                    txtCurrentBrand.Text = art.brand.Description;
+                    txtCodArticle.Text = art.CodArticle;
+                    txtName.Text = art.Name;
+                    txtPrice.Text = art.Price.ToString();
+                    txtDescription.Text = art.Description;
+                    if (!string.IsNullOrEmpty(art.UrlImg))
+                    {
+                        txtImg2.ImageUrl = Security.Helper.UrlLocal(art.UrlImg);
 
+                    }
+                    else
+                    {
+                        txtImg2.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
+                    }
+                    txtImg2.AlternateText = "Img Article";
                 }
                 else
                 {
-                    txtImg2.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
+                    Session.Add("error", "Denegate Access");
+                    Response.Redirect("Error.aspx", false);
                 }
-                txtImg2.AlternateText = "Img Article";
-                txtCodArticle.Text = art.CodArticle;
-                ddlCategories.SelectedIndex = art.category.Id;
-                ddlBrands.SelectedIndex = art.brand.Id;
-
-               
             }
-            else
-            {
-                Session.Add("error", "Denegate Access");
-                Response.Redirect("Error.aspx", false);
-            }
-
         }
-
-
-
         protected void btnSaveChanges_Click(object sender, EventArgs e)
         {
+
+
+
 
             ArticleAccess access = new ArticleAccess();
             Article art = new Article();
@@ -89,16 +87,36 @@ namespace SalesSystem
             {
 
                 art.Description = txtDescription.Text;
-                art.Price = decimal.Parse(txtPrice.Text);
+                art.Price = decimal.Parse(txtPrice.Text.ToString());
                 art.CodArticle = txtCodArticle.Text;
                 art.Name = txtName.Text;
-                art.brand = new Brand();
-                art.brand.Id = int.Parse(ddlBrands.SelectedValue);
                 art.category = new Category();
-                art.category.Id = int.Parse(ddlCategories.SelectedValue);
-               
+                var idreceived = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                var art2 = access.listArticle(idreceived)[0];
+                if (divNewCat.Visible)
+                {
+                    art.category.Id = int.Parse(ddlCategories.SelectedValue.ToString());
+                    art.category.Description = ddlCategories.Text;
+                }
+                else
+                {
+                    art.category.Id = art2.category.Id;
+                    art.category.Description = art2.category.Description;
+                }
 
-               var idart = int.Parse(Request.QueryString["id"].ToString());
+                art.brand = new Brand();
+                if (divNewBrand.Visible)
+                {
+                    art.brand.Id = int.Parse(ddlBrands.SelectedValue.ToString());
+                    art.brand.Description = ddlBrands.Text;
+                }
+                else
+                {
+                    art.brand.Id = art2.brand.Id;
+                    art.brand.Description = art2.brand.Description;
+                }
+
+                var idart = int.Parse(Request.QueryString["id"].ToString());
 
                 art.Id = idart;
 
@@ -106,14 +124,19 @@ namespace SalesSystem
                 {
                     string route = Server.MapPath("./Images/Imgs_Art/");
 
-                    fileArticle.PostedFile.SaveAs(route + "Art_" + idart + ".jpg");
-                    art.UrlImg = "Art_" + idart + ".jpg";
+                    fileArticle.PostedFile.SaveAs(route + "ArtCod_" + idart + ".jpg");
+                    art.UrlImg = "ArtCod_" + idart + ".jpg";
                 }
                 else if (!string.IsNullOrEmpty(txtUrl2.Text))
                 {
-                    art.UrlImg = txtImg2.ImageUrl;
+                    art.UrlImg = txtUrl2.Text;
                 }
+                else
+                {
+                    art.UrlImg = txtImg2.ImageUrl.ToString();
 
+                }
+               
                 access.editArticle(art);
 
                 Response.Redirect("Management.aspx", false);
@@ -124,6 +147,16 @@ namespace SalesSystem
                 Response.Redirect("Error.aspx", false);
             }
 
+        }
+
+        protected void btnEditCat_Click(object sender, EventArgs e)
+        {
+            divNewCat.Visible = !divNewCat.Visible;
+        }
+
+        protected void btnEditBrand_Click(object sender, EventArgs e)
+        {
+            divNewBrand.Visible = !divNewBrand.Visible;
         }
     }
 }

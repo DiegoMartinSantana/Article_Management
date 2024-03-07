@@ -11,6 +11,38 @@ namespace AccessBd
 {
     public class UsersAccess
     {
+        public List<string> ListEmails()
+        {
+            BdAccess access = new BdAccess();
+            try
+            {
+                access.setConsultation("select Email from USERS");
+                access.executeRead();
+                var list = new List<string>();
+
+                while (access.reader.Read())
+                {
+                    list.Add((string)access.reader["Email"]);
+                }
+                return list;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                access.close();
+            }
+
+
+
+
+
+        }
 
         public List<int> listIdUsers()
         {

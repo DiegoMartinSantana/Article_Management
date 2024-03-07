@@ -35,7 +35,7 @@ namespace SalesSystem
                     txtCategory.ReadOnly = true;
                     txtBrand.ReadOnly = true;
                     txtCodArticle.ReadOnly = true;
-                  
+
 
                     string idreceived;
                     if (Request.QueryString["id"] == null)
@@ -49,13 +49,14 @@ namespace SalesSystem
 
                     ArticleAccess access = new ArticleAccess();
 
-                   var art = access.listArticle(idreceived)[0]; //only one value returned
+                    var art = access.listArticle(idreceived)[0]; //only one value returned
 
                     txtName.Text = art.Name;
                     txtPrice.Text = art.Price.ToString();
                     txtDescription.Text = art.Description;
                     if (!string.IsNullOrEmpty(art.UrlImg))
                     {
+
                         txtImg.ImageUrl = Security.Helper.UrlLocal(art.UrlImg);
 
                     }
@@ -67,9 +68,9 @@ namespace SalesSystem
                     txtCategory.Text = art.category.Description.ToString();
                     txtBrand.Text = art.brand.Description.ToString();
                     txtCodArticle.Text = art.CodArticle;
-                   
+
                 }
-                
+
             }
         }
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -78,7 +79,7 @@ namespace SalesSystem
             btnConfirm.Visible = true;
 
         }
-      
+
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
@@ -91,7 +92,7 @@ namespace SalesSystem
             {
                 idart = int.Parse(Request.QueryString["id"].ToString());
             }
-            Response.Redirect("EditArticle.aspx?id="+idart, false);
+            Response.Redirect("EditArticle.aspx?id=" + idart, false);
 
 
         }

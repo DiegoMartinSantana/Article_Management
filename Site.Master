@@ -16,7 +16,7 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
-    <link href="Scripts/StyleSheetGlobal.css" rel="stylesheet" />
+    <link href="Content/StyleSheetGlobal.css" rel="stylesheet" />
     <style>
      
        

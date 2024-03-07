@@ -135,6 +135,12 @@ namespace SalesSystem
         {
             Page.Validate();
 
+            if (Validation.EmailExistence(txtemailuser.Text))
+            {
+                pEmailValidate.Visible = true;
+                return;
+            }
+
             if (!Page.IsValid)
             {
                 return;

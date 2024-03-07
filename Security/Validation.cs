@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AccessBd;
 using Domain;
 namespace Security
 {
@@ -25,7 +26,7 @@ namespace Security
 
 
         }
-        
+
         public static bool IsAdmin(object User)
         {
 
@@ -41,6 +42,18 @@ namespace Security
 
         }
 
+        public static bool EmailExistence(string email)
+        {
+            var UAccess = new UsersAccess();
+            var listEmails = UAccess.ListEmails();
+            foreach (var item in listEmails)
+            {
+                if (item == email)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
-
 }

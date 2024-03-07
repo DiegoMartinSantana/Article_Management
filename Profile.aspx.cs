@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Domain;
 using AccessBd;
+using Security;
 namespace SalesSystem
 {
     public partial class Profile : System.Web.UI.Page
@@ -21,6 +22,19 @@ namespace SalesSystem
 
             if (!IsPostBack)
             {
+                if (user.Email == "admin@admin.com" || user.Email== "user@user.com")
+                {
+                    txtemailuser.Enabled = false;
+                    txtPass.Enabled = false;
+                    pGeneric.Visible = true;
+                    btnSave.Enabled = false;
+                    txtRepeatPass.Enabled = false;
+                    txtUrlLink2.Enabled = false;
+                    TxtName.Enabled = false;
+                    TxtSurname.Enabled = false; 
+                }
+
+
                 txtemailuser.Text = user.Email;
                 txtPass.Text = user.Password;
                 txtRepeatPass.Text = user.Password;
@@ -97,6 +111,17 @@ namespace SalesSystem
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            var user = (Users)Session["user"];
+
+            if (txtemailuser.Text != user.Email)
+            {
+                if (Validation.EmailExistence(txtemailuser.Text))
+                {
+                    pEmailValidateEdit.Visible = true;
+                    return;
+                }
+            }
+
             Page.Validate();
             if (!Page.IsValid)
             {
@@ -105,7 +130,6 @@ namespace SalesSystem
 
 
 
-            Users user = (Users)Session["user"];
             if (!string.IsNullOrEmpty(txtPass.Text))
             {
                 if (txtPass.Text == txtRepeatPass.Text)

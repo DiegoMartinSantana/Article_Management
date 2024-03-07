@@ -8,7 +8,7 @@
             margin-right: 5%
         }
 
-     
+
         .cardsCount4 {
             margin-left: 15%;
         }
@@ -23,6 +23,7 @@
 
         .cardsCount1 {
             margin-left: 40%;
+            margin-right: 30%
         }
 
         .imgStar {
@@ -35,10 +36,9 @@
         }
 
         .cards {
+            margin: 1%;
             margin-bottom: 2%;
             width: 12rem;
-            margin-right: 30px;
-            display: grid;
             display: grid;
             border: 2px solid #ececec;
             border-radius: 22px;
@@ -48,6 +48,31 @@
             margin-bottom: 10%;
             padding: 2%
         }
+
+        .imgCard {
+            padding-right: 5px;
+            width: 100%;
+            height: 151px;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .divImgCard {
+            max-width: 352px;
+            overflow: hidden;
+            border: solid 0.5px lightgrey;
+            border-radius: 22px;
+            margin-top: 10%;
+            height: 151px;
+        }
+
+        .cardGral {
+            width: 12rem;
+            margin-right: 30px;
+            margin-block-end: inherit;
+            display: grid;
+            border-radius: 22px;
+        }
     </style>
     <div class="row mb-3 row-cols-1 text-lg-center " style="margin-left: 15px">
 
@@ -56,7 +81,7 @@
             if (listArt.Count != 0)
             { %>
         <div class="row d-flex justify-content-center" style="margin-top: 1.5%; border: 2px solid grey; border-radius: 22px">
-            <div class="mb-3 text-black-50" style="margin-top: 3.5%; padding-bottom: 1.5%">
+            <div class="mb-3 text-black-50" style="margin-top: 3.5%;">
 
 
                 <div class="boxCute">
@@ -71,7 +96,7 @@
                 {
             %>
 
-            <div class="card cards <%if (first == true)
+            <div class="card cards cardGral <%if (first == true)
                 {
                     if (listArt.Count == 1)
                     {
@@ -89,22 +114,15 @@
                          %>
 
             <%} %> ">
-
-
                 <% 
-
-                    Art.UrlImg = Security.Helper.UrlLocal(Art.UrlImg);
-
-
+                    imgArtFav.ImageUrl = Security.Helper.UrlLocal(Art.UrlImg);
                 %>
-                <div style="max-width: 352px; overflow: hidden">
-
-                    <img src="<%:Art.UrlImg %>"
-                        class="card-img-top" alt="Img Article" style="margin-top: 10%; width: 100%; height: auto">
+                <div class="divImgCard">
+                    <asp:Image class="card-img-top imgCard" runat="server" alt="Img Article" ID="imgArtFav" />
                 </div>
 
 
-                <div class="card-body  ">
+                <div class="card-body mb-3 " style="max-width: 150px">
                     <div class="bodyCards">
                         <h5 class="card-title"><%: Art.Name %></h5>
                         <p class="card-text"><%:Art.Description %>.</p>
@@ -124,18 +142,16 @@
             <%}
                 else
                 { %>
-            <div class="col-6">
+            <div class="row" style="margin-top:3%">
                 <div class="mb-3">
 
                     <h3>You do not have selected Favorites </h3>
 
                 </div>
-                <div class="mb-3">
+                <div class="">
                     <p>Do you want add Any?</p>
                 </div>
-            </div>
-            <div class="col-6">
-                <a href="Default.aspx" class="btns  btn btn-primary">Go</a>
+                <a style="width:12%;margin-left:44%" href="Default.aspx" class=" btn btn-primary">Go</a>
                 <div>
                 </div>
             </div>

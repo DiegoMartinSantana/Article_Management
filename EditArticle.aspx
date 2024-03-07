@@ -1,24 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditArticle.aspx.cs" Inherits="SalesSystem.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
     <style>
         .margin {
-            margin-top: 6%;
+            margin-top: 4%;
         }
 
         .sizeTxt {
             width: 60%;
             max-width: 100%;
         }
-
-     
+        .marginBtn{
+            margin-left:3%;
+        }
+       
     </style>
-    <div class="row">
+    <div class="row ">
 
 
         <div class="mb-3 " style="border: solid; border-color: darkred">
-            <h3 style="text-align:center">Edit you Article : </h3>
+            <h3 style="text-align: center">Edit you Article : </h3>
         </div>
     </div>
 
@@ -32,7 +33,7 @@
 
             </div>
             <div class="mb-3  ">
-                <asp:TextBox runat="server" CssClass="sizeTxt form-control" ID="txtCodArticle"  />
+                <asp:TextBox runat="server" CssClass="sizeTxt form-control" ID="txtCodArticle" />
             </div>
             <div class="mb-3 margin ">
                 <asp:Label Text="Name : " runat="server" />
@@ -46,24 +47,37 @@
 
             </div>
             <div class="mb-3 ">
-                <asp:TextBox runat="server" ID="txtDescription" class="form-control sizeTxt" PlaceHolder="Enter Description" />
+                <asp:TextBox runat="server" ID="txtDescription" CssClass="form-control sizeTxt" PlaceHolder="Enter Description" />
             </div>
-
             <div class="mb-3 margin ">
-                <asp:Label Text="Category : " runat="server" />
-
+                <asp:Label Text="Current Category : " runat="server" />
             </div>
 
             <div class="mb-3 ">
-                <asp:DropDownList runat="server" ID="ddlCategories" CssClass="formCheck">
+                <asp:TextBox runat="server" ID="txtCurrentCat" CssClass="form-control sizeTxt d-inline" Enabled="false" />
+                <asp:Button Text="Edit Category" CssClass="btn btn-dark d-inline marginBtn" runat="server" ID="btnEditCat" OnClick="btnEditCat_Click" />
+
+            </div>
+            
+            <div class="mb-3 margin " runat="server" id="divNewCat" visible="false">
+                <asp:Label Text=" New Category : " runat="server" />
+                <asp:DropDownList runat="server" ID="ddlCategories" CssClass="formCheck dll">
                 </asp:DropDownList>
             </div>
-            <div class="mb-3 margin">
-                <asp:Label Text="Brand : " runat="server" />
+            <div class="mb-3 margin ">
+                <asp:Label Text="Current Brand : " runat="server" />
 
             </div>
-            <div class="mb-3 ">
-                <asp:DropDownList runat="server" ID="ddlBrands" CssClass="formCheck">
+
+            <div class="mb-3">
+                <asp:TextBox runat="server" ID="txtCurrentBrand" CssClass="form-control sizeTxt d-inline" Enabled="false" />
+                <asp:Button Text="Edit Brand" CssClass="btn btn-dark d-inline marginBtn" ID="btnEditBrand" runat="server" OnClick="btnEditBrand_Click"/>
+
+            </div>
+            
+            <div class="mb-3 margin" runat="server" id="divNewBrand" visible="false">
+                <asp:Label Text="New Brand : " runat="server" />
+                <asp:DropDownList runat="server" ID="ddlBrands" CssClass="formCheck dll">
                 </asp:DropDownList>
             </div>
 
@@ -85,7 +99,7 @@
 
                 <div class="mb-3" runat="server" id="divUploadUrl">
                     <p>Or upload image by Url  : </p>
-                    <asp:TextBox runat="server" TextMode="Url" CssClass="form form-control sizeTxt" PlaceHolder="Enter Url" ID="txtUrl2" />
+                    <asp:TextBox runat="server" TextMode="Url" CssClass="form form-control sizeTxt " PlaceHolder="Enter Url" ID="txtUrl2" />
                 </div>
 
                 <div class="mb-3 square">
@@ -96,8 +110,8 @@
             </div>
 
         </div>
-
     </div>
+
     <div class="row" style="margin-top: 1%">
 
         <div class="col">
@@ -105,7 +119,9 @@
             <div class="mb-3">
                 <a class="btn btn-secondary" href="Management.aspx">Cancel </a>
                 <asp:Button Text="Save Changes " CssClass="btn btn-primary" ID="btnSaveChanges" runat="server" OnClick="btnSaveChanges_Click" Style="margin-left: 2%" />
+                <p runat="server" style="color:red" visible="false" id="pNotChanges">  No changes have been made to the article. Press cancel to back.</p>
             </div>
         </div>
     </div>
+
 </asp:Content>

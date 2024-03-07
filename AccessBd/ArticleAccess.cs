@@ -45,7 +45,7 @@ namespace AccessBd
             try
             {
               
-                access.setConsultation("Update  ARTICULOS set Codigo = @cod, Nombre = @nom , Descripcion = @desc, IdMarca=@idmar,IdCategoria = @idcat, ImagenUrl = @imgurl WHERE Id=@id");
+                access.setConsultation("Update  ARTICULOS set Codigo = @cod, Nombre = @nom , Descripcion = @desc, IdMarca=@idmar,IdCategoria = @idcat, ImagenUrl = @imgurl,Precio = @pre WHERE Id=@id");
                 access.setParameter("@cod", art.CodArticle);
                 access.setParameter("@nom", art.Name);
                 access.setParameter("@desc", art.Description);

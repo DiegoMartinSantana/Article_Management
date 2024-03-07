@@ -11,13 +11,14 @@
     <div class="row" style="margin-top: 3%">
         <div class="col-md-6">
 
-
             <div class="mb-3">
+                <p style="color:red" runat="server" id="pGeneric" visible="false">Generic users cannot be modified. </p>
 
                 <asp:Label ID="lblEmailUser" runat="server" Text="Email :" CssClass="form-label"></asp:Label>
                 <asp:TextBox runat="server" CssClass="form-control txt" ID="txtemailuser" Style="max-width: 80%" PlaceHolder="Enter Email" TextMode="Email" />
+                <p style="color:red" runat="server" id="pEmailValidateEdit" visible="false">That email has already been registered </p>
+                
                 <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Email Required" ControlToValidate="txtemailuser" runat="server" />
-
             </div>
 
 
@@ -77,7 +78,7 @@
 
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-top:2%">
         <div class="col-md-6">
 
             <div class="mb-3">

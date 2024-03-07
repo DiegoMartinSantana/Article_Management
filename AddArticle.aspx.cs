@@ -82,7 +82,6 @@ namespace SalesSystem
 
                 //create de route "automatically" 
                 //mappath = route of pokedexweb 
-
                 //I get the last id and add 1
                 Article lastArt;
                 try
@@ -105,8 +104,6 @@ namespace SalesSystem
                 {
                     art.UrlImg = txtUrl2.Text;
                 }
-
-
                 try
                 {
                     accessArt.addArticle(art);

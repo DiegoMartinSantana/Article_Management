@@ -24,3 +24,10 @@
     border-radius: 22px;
     border: 2px solid grey;
 }
+.dll {
+    margin-left: 8%;
+    padding-left: 6%;
+    padding-right: 6%;
+    border: solid 0.5px black;
+    border-radius: 6px;
+}

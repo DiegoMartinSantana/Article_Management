@@ -11,6 +11,31 @@
             width: 60%;
         }
 
+        .imgCard {
+            padding-right: 5px;
+            width: 100%;
+            height: 151px;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .divImgCard {
+            max-width: 352px;
+            overflow: hidden;
+            border: solid 0.5px lightgrey;
+            border-radius: 22px;
+            margin-top: 10%;
+            height: 151px;
+        }
+
+        .cardGral {
+            width: 12rem;
+            margin-right: 30px;
+            margin-block-end: inherit;
+            display: grid;
+            border-radius: 22px;
+        }
+        
        
     </style>
 
@@ -110,18 +135,18 @@
                         {
                 %>
 
-                <div class="card "  style="width: 12rem; margin-right: 30px; margin-block-end: inherit; display: grid; border-radius: 22px">
+                <div   class="card cardGral">
 
                     <% 
 
                         imgArtCard.ImageUrl = Security.Helper.UrlLocal(Art.UrlImg);
 
 
-                    %><div style="max-width: 352px; overflow: hidden">
-                        <asp:Image alt="Image Article" ID="imgArtCard" runat="server" Style="margin-top: 10%;padding-right : 5px; width: 100%; height: auto" />
+                    %><div class="divImgCard">
+                        <asp:Image alt="Image Article" CssClass="imgCard" ID="imgArtCard" runat="server" />
 
                     </div>
-                    <div class="card-body mb-3">
+                    <div class="card-body  mb-3" style="max-width: 150px">
                         <h5 class="card-title"><%: Art.Name %></h5>
                         <p class="card-text"><%:Art.Description %>.</p>
                         <p class="card-text"><%:Art.Price %> $</p>
@@ -143,7 +168,7 @@
                         %>
 
                         <div class="mb-3">
-                            <img src="https://clipart-library.com/img/2184494.png" alt="Little Star Img " style="width:70px; height:auto"/>
+                            <img src="https://clipart-library.com/img/2184494.png" alt="Little Star Img " style="width: 70px; height: auto" />
 
                         </div>
 

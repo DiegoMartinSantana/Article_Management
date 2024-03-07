@@ -72,17 +72,9 @@
             <div class="mb-3 ">
                 <asp:TextBox runat="server" ID="txtPrice" class="form-control sizeTxt" PlaceHolder="Enter Price" />
             </div>
-           
-               
+          
             <div class="mb-3">
-                <input type="file" id="fileArticle" runat="server" cssclass="form-control" />
-            </div>
-            <p>Or upload image by Url  : </p>
-            <div class="mb-3">
-                <asp:TextBox runat="server" TextMode="Url" CssClass="form form-control" PlaceHolder="Enter Url" ID="txtUrl" />
-            </div>
-            <div class="mb-3">
-                <asp:Image runat="server" CssClass="img-fluid mb-3 imgSize" ID="txtImg" AlternateText="Img Article" Style="height: 300PX;" />
+                <asp:Image runat="server" CssClass="img-fluid mb-3 imgSize" ID="txtImg" AlternateText="Img Article" />
             </div>
           
         </div>
