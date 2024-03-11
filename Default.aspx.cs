@@ -30,42 +30,52 @@ namespace SalesSystem
             if (!IsPostBack)
             {
                 refreshList();
+               
+               if (Request.QueryString["IdFav"] != null)
+                {
+                    FavoritesAccess fAccess = new FavoritesAccess();
+                    Users user = (Users)Session["user"];
+                    int idart = int.Parse(Request.QueryString["idFav"].ToString());
+                    fAccess.AddFavorite(user.Id, idart);
+                }
             }
 
-            if (Request.QueryString["idD"] != null)
+            else
             {
-                FavoritesAccess favoritesAccess = new FavoritesAccess();
-                Users user = (Users)Session["user"];
-                int idDelete = int.Parse(Request.QueryString["idD"].ToString());
-                favoritesAccess.Delete(user.Id, idDelete);
+                refreshList();
 
             }
 
-
-
-            if (Request.QueryString["id"] != null)
-            {
-
-                FavoritesAccess fAccess = new FavoritesAccess();
-                Users user = (Users)Session["user"];
-                int idart = int.Parse(Request.QueryString["id"].ToString());
-                fAccess.AddFavorite(user.Id, idart);
-
-            }
         }
 
         protected void chkfilter_CheckedChanged(object sender, EventArgs e)
         {
-            txtsearch.Enabled= !chkfilter.Checked; 
+            txtsearch.Enabled = !chkfilter.Checked;
 
             ArticleAccess access = new ArticleAccess();
             list = access.listArticle();
+            //probably here is the problem
+
+            if (chkfilter.Checked)
+            {
+                if (ddlby.Text == "Brand")
+                {
+                    ddlCritery.Items.Add("Starts with : ");
+                    ddlCritery.Items.Add("Ends with : ");
+                    ddlCritery.Items.Add("Contains : ");
+                }
+            }
+
+
+
         }
         protected void txtsearch_TextChanged(object sender, EventArgs e)
         {
             list = (List<Article>)Session["listarticle"];
             list = list.FindAll(x => x.Name.ToUpper().Contains(txtsearch.Text.ToUpper()) ||
             x.Description.ToUpper().Contains(txtsearch.Text.ToUpper()));
+
+
         }
 
         protected void ddlby_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,6 +109,7 @@ namespace SalesSystem
 
                 list = access.filter(ddlby.SelectedItem.ToString(), ddlCritery.SelectedItem.ToString(), txtFilterAdvanced.Text);
 
+                Session.Add("listarticle", list);
 
             }
             catch (Exception ex)
@@ -108,5 +119,7 @@ namespace SalesSystem
 
             }
         }
+
+
     }
 }

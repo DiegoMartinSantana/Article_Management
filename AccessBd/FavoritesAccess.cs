@@ -11,6 +11,29 @@ namespace AccessBd
 {
     public  class FavoritesAccess
     {
+        public void DeleteArticle(int id)
+        {
+            var access = new BdAccess();
+            try
+            {
+                access.setConsultation("delete from favoritos where IdArticulo = @idart");
+                access.setParameter("idart", id);
+                access.executeAccion();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                access.close();
+            }
+
+
+        }
         public bool IsFavorite(int idUser, int idArticle)
         {
             BdAccess access = new BdAccess();
@@ -29,9 +52,6 @@ namespace AccessBd
 
                 throw ex;
             }
-
-
-            //si la lectura es != null es porque existe
 
         }
         public void AddFavorite(int idUser,int idArticle)

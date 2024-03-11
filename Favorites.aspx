@@ -96,7 +96,7 @@
                 {
             %>
 
-            <div class="card cards cardGral <%if (first == true)
+            <div style="margin-bottom:2.5%"  class="card cards cardGral <%if (first == true)
                 {
                     if (listArt.Count == 1)
                     {
@@ -121,7 +121,6 @@
                     <asp:Image class="card-img-top imgCard" runat="server" alt="Img Article" ID="imgArtFav" />
                 </div>
 
-
                 <div class="card-body mb-3 " style="max-width: 150px">
                     <div class="bodyCards">
                         <h5 class="card-title"><%: Art.Name %></h5>
@@ -129,20 +128,18 @@
                         <p class="card-text"><%:Art.Price %> $</p>
                     </div>
                     <div class="mb-3">
-                        <a href="Default.aspx?idD=<%: Art.Id %>" class="btn btnGreen" style="background-color: #C0F9AB">Remove from Favorites </a>
+                        <a href="Favorites.aspx?idDel=<%: Art.Id %>" class="btn btnGreen" style="background-color: #C0F9AB">Remove from Favorites </a>
 
                     </div>
                     <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn btnLigth " style="background-color: skyblue">Look More </a>
                 </div>
             </div>
 
-
-
             <%} %>
             <%}
                 else
                 { %>
-            <div class="row" style="margin-top:3%">
+            <div class="row" style="margin-top: 3%">
                 <div class="mb-3">
 
                     <h3>You do not have selected Favorites </h3>
@@ -151,7 +148,7 @@
                 <div class="">
                     <p>Do you want add Any?</p>
                 </div>
-                <a style="width:12%;margin-left:44%" href="Default.aspx" class=" btn btn-primary">Go</a>
+                <a style="width: 12%; margin-left: 44%" href="Default.aspx" class=" btn btn-primary">Go</a>
                 <div>
                 </div>
             </div>

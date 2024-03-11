@@ -16,7 +16,7 @@
             <div class="mb-3">
 
                 <asp:Label ID="lblEmailUser" runat="server" Text="Email :" CssClass="form-label"></asp:Label>
-                <asp:TextBox runat="server" CssClass="form-control txt" ID="txtemailuser" PlaceHolder="Enter Email" TextMode="Email" />
+                <asp:TextBox runat="server" CssClass="form-control txt"  ID="txtemailuser" PlaceHolder="Enter Email" TextMode="Email" />
                 <p style="color:red" runat="server" id="pEmailValidate" visible="false">That email has already been registered </p>
                 <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Email Required" ControlToValidate="txtemailuser" runat="server"  />
 

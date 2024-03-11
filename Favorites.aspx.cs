@@ -11,7 +11,7 @@ using Security;
 namespace SalesSystem
 {
     public partial class Favourites : System.Web.UI.Page
-    {   
+    {
 
         public List<Article> listArt = new List<Article>();
         public bool first = true;
@@ -23,12 +23,19 @@ namespace SalesSystem
             }
             if (!IsPostBack)
             {
-               
+                if (Request.QueryString["idDel"] != null)
+                {
+                    FavoritesAccess favoritesAccess = new FavoritesAccess();
+                    Users user = (Users)Session["user"];
+                    int idDelete = int.Parse(Request.QueryString["idDel"].ToString());
+                    favoritesAccess.Delete(user.Id, idDelete);
+
+                }
                 ArticleAccess accessArt = new ArticleAccess();
                 FavoritesAccess accessFav = new FavoritesAccess();
 
                 try
-                    
+
                 {
                     Users user = new Users();
                     user = (Users)Session["user"];
@@ -37,7 +44,7 @@ namespace SalesSystem
 
                     foreach (var itemFav in listFav)
                     {
-                        Article article= new Article();
+                        Article article = new Article();
 
                         article = accessArt.returnById(itemFav.IdArticle);
 

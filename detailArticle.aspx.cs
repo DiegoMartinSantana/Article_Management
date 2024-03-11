@@ -99,7 +99,8 @@ namespace SalesSystem
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            ArticleAccess access = new ArticleAccess();
+            var accessFav = new FavoritesAccess();
+            var access = new ArticleAccess();
             int id;
             if (Request.QueryString["id"] != null)
             {
@@ -113,7 +114,7 @@ namespace SalesSystem
             try
             {
                 access.deleteArticle(id);
-
+                accessFav.DeleteArticle(id);
             }
             catch (Exception ex)
             {

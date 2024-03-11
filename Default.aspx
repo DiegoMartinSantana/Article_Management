@@ -35,11 +35,10 @@
             display: grid;
             border-radius: 22px;
         }
-        
-       
     </style>
 
     <main>
+
 
         <div class="bg-light " style="margin-left: 4%; padding-left: 6%">
             <div class="row mb-0">
@@ -68,12 +67,12 @@
                 </div>
             </div>
 
-
-            <%if (chkfilter.Checked)
-                {
-            %>
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
+                    <%if (chkfilter.Checked)
+                        {
+                    %>
+
                     <div class="row mb-3" style="margin-left: 10px">
 
                         <div class="col mb-3" style="max-width: 25%">
@@ -122,64 +121,66 @@
 
                             </div>
                         </div>
+
+
+
+                        <%} %>
+                        <div class="row mb-3 row-cols-1 text-center " style="margin-left: 15px">
+                            <%
+                                if (list != null)
+                                {
+                                    foreach (Domain.Article Art in list)
+                                    {
+                            %>
+
+                            <div class="card cardGral">
+
+                                <% 
+
+                                    imgArtCard.ImageUrl = Security.Helper.UrlLocal(Art.UrlImg);
+
+
+                                %><div class="divImgCard">
+                                    <asp:Image alt="Image Article" CssClass="imgCard" ID="imgArtCard" runat="server" />
+
+                                </div>
+                                <div class="card-body  mb-3" style="max-width: 150px">
+                                    <h5 class="card-title"><%: Art.Name %></h5>
+                                    <p class="card-text"><%:Art.Description %>.</p>
+
+                                    <%if (Security.Validation.Login(Session["user"]))
+                                        {  %>
+                                    <% AccessBd.FavoritesAccess access = new AccessBd.FavoritesAccess();
+                                        Domain.Users user = (Domain.Users)Session["user"];
+                                        if (!access.IsFavorite(user.Id, Art.Id))
+                                        {  %>
+
+                                    <div class="mb-3">
+                                        <a href="Default.aspx?idFav=<%: Art.Id %>" class="btn  btnGreen" style="background-color: #C0F9AB">Add to favorites </a>
+                                    </div>
+
+
+                                    <%}
+                                        else
+                                        {
+                                    %>
+
+                                    <div class="mb-3">
+                                        <img src="https://clipart-library.com/img/2184494.png" alt="Little Star Img " style="width: 70px; height: auto" />
+
+                                    </div>
+
+                                    <%} %>
+                                    <%} %>
+                                    <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn btnLigth" style="background-color: skyblue">Go to Article </a>
+                                </div>
+                            </div>
+                            <%}
+                                }%>
+                        </div>
+                    </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
-
-            <%} %>
-            <div class="row mb-3 row-cols-1 text-center " style="margin-left: 15px">
-                <%
-                    if (list != null)
-                    {
-                        foreach (Domain.Article Art in list)
-                        {
-                %>
-
-                <div   class="card cardGral">
-
-                    <% 
-
-                        imgArtCard.ImageUrl = Security.Helper.UrlLocal(Art.UrlImg);
-
-
-                    %><div class="divImgCard">
-                        <asp:Image alt="Image Article" CssClass="imgCard" ID="imgArtCard" runat="server" />
-
-                    </div>
-                    <div class="card-body  mb-3" style="max-width: 150px">
-                        <h5 class="card-title"><%: Art.Name %></h5>
-                        <p class="card-text"><%:Art.Description %>.</p>
-                        <p class="card-text"><%:Art.Price %> $</p>
-
-                        <%if (Security.Validation.Login(Session["user"]))
-                            {  %>
-                        <% AccessBd.FavoritesAccess access = new AccessBd.FavoritesAccess();
-                            Domain.Users user = (Domain.Users)Session["user"];
-                            if (!access.IsFavorite(user.Id, Art.Id))
-                            {  %>
-
-                        <div class="mb-3">
-                            <a href="Default.aspx?id=<%: Art.Id %>" class="btn  btnGreen" style="background-color: #C0F9AB">Add to favorites </a>
-
-                        </div>
-                        <%}
-                            else
-                            {
-                        %>
-
-                        <div class="mb-3">
-                            <img src="https://clipart-library.com/img/2184494.png" alt="Little Star Img " style="width: 70px; height: auto" />
-
-                        </div>
-
-                        <%} %>
-                        <%} %>
-                        <a href="detailArticle.aspx?idShow=<%: Art.Id %>" class="btn btnLigth" style="background-color: skyblue">Go to Article </a>
-                    </div>
-                </div>
-                <%}
-                    }%>
-            </div>
         </div>
 
     </main>

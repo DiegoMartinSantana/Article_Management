@@ -36,6 +36,18 @@ namespace Domain
             email.Body = message;
 
         }
+        public void BuildEmailRecoverPass(string destination, string code)
+        {
+            email = new MailMessage();
+            email.From = new MailAddress("noresponder@ecommerceasp.com");
+            email.To.Add(destination);
+            email.Subject = "Recover Pass";
+            email.IsBodyHtml = true;
+            string message = "RECOVER CODE : " + code +  "  Enter the code without the quotes (\"\")."; 
+            email.Body = message;
+
+
+        }
         public void buildEmailAdmin(string destination, string subject, string message)
         {
             email = new MailMessage();

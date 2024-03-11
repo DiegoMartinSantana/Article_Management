@@ -11,6 +11,29 @@ namespace AccessBd
 {
     public class UsersAccess
     {
+
+        public void ChangePass(string email ,string newPass)
+        {
+            BdAccess access = new BdAccess();
+
+            try
+            {
+                access.setConsultation("update USERS set pass = @newPass where  email = @emailEdit");
+                access.setParameter("@emailEdit", email);
+                access.setParameter("@newPass", newPass);
+                access.executeAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                access.close();
+            }
+
+        }
         public List<string> ListEmails()
         {
             BdAccess access = new BdAccess();
