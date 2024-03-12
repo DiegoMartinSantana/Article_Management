@@ -39,7 +39,7 @@
             <div class="mb-3  ">
                 <asp:TextBox runat="server" ID="txtName" CssClass="form-control sizeTxt" PlaceHolder="Enter Name " />
                 <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Required" ControlToValidate="txtName" runat="server" />
-                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Only letters " ControlToValidate="txtName" ValidationExpression="^[A-Za-z\s]+$" runat="server" />
+                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Not Simbols " ControlToValidate="txtName" ValidationExpression="^[a-zA-Z0-9]+$" runat="server" />
             </div>
             <div class="mb-3  margin">
                 <asp:Label Text="Description : " runat="server" />
@@ -48,7 +48,7 @@
             <div class="mb-3 ">
                 <asp:TextBox runat="server" ID="txtDescription" class="form-control sizeTxt" PlaceHolder="Enter Description" />
                 <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Required" ControlToValidate="txtDescription" runat="server" />
-                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Minimum 20 characters" ControlToValidate="txtDescription" ValidationExpression="^^.{20,}$" runat="server" />
+                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Minimum 10 characters" ControlToValidate="txtDescription" ValidationExpression="^.{10,}$" runat="server" />
 
             </div>
 

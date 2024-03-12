@@ -80,7 +80,11 @@ namespace SalesSystem
 
 
 
-
+            Page.Validate();
+            if (!Page.IsValid)
+            {
+                return;
+            }
             ArticleAccess access = new ArticleAccess();
             Article art = new Article();
             try

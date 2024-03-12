@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,8 @@ namespace Access
 
         //constructor with default bd declaration 
         public BdAccess()
-        { //crea la conexion
-            Connection = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB;integrated security=true");
+        { 
+            Connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
             Command = new SqlCommand();
 
         }
