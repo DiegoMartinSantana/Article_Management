@@ -45,7 +45,7 @@
             <div class="mb-3  ">
                 <asp:TextBox runat="server" ID="txtName" CssClass="form-control sizeTxt" PlaceHolder="Enter Name " />
                 <asp:RequiredFieldValidator Style="color: red" ErrorMessage="Required" ControlToValidate="txtName" runat="server" />
-                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Not simbols" ControlToValidate="txtName" ValidationExpression="^[a-zA-Z0-9]+$" runat="server" />
+                <asp:RegularExpressionValidator Style="color: red" ErrorMessage="Not simbols" ControlToValidate="txtName" ValidationExpression="^[a-zA-Z0-9\s]*$" runat="server" />
             </div>
 
             <div class="mb-3  margin">
