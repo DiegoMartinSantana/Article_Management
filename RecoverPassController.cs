@@ -21,8 +21,8 @@ namespace SalesSystem
                 RequestUri = new Uri("https://password-code-generator.p.rapidapi.com/pass/8/no"),
                 Headers =
     {
-        { "X-RapidAPI-Key", "9eef68c5cbmshb1dcf4a93719887p11b179jsn299d0d3841cd" },
-        { "X-RapidAPI-Host", "password-code-generator.p.rapidapi.com" },
+        { },
+        {  },
     },
             };
 
