@@ -51,7 +51,7 @@ namespace SalesSystem
 
                     var art = access.listArticle(idreceived)[0]; //only one value returned
 
-                    txtName.Text = art.Name;
+
                     txtPrice.Text = art.Price.ToString();
                     txtDescription.Text = art.Description;
                     if (!string.IsNullOrEmpty(art.UrlImg))
@@ -68,6 +68,7 @@ namespace SalesSystem
                     txtCategory.Text = art.category.Description.ToString();
                     txtBrand.Text = art.brand.Description.ToString();
                     txtCodArticle.Text = art.CodArticle;
+                    txtName.Text = art.Name;
 
                 }
 

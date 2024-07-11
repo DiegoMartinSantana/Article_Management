@@ -122,5 +122,10 @@ namespace SalesSystem
                 Response.Redirect("error.aspx", false);
             }
         }
+
+        protected void txtUrl2_TextChanged(object sender, EventArgs e)
+        {
+            ImgArticuloNueva.ImageUrl=txtUrl2.Text;
+        }
     }
 }

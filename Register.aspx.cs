@@ -13,7 +13,6 @@ namespace SalesSystem
     public partial class Register : System.Web.UI.Page
     {
 
-
         public int Changes { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,7 +25,7 @@ namespace SalesSystem
             {
 
 
-                txtImgUser1.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
+                txtImgUser1.ImageUrl = "https://cdn-icons-png.freepik.com/512/6543/6543634.png";
 
                 if (Security.Validation.Login(Session["user"]))
                 {
@@ -61,7 +60,8 @@ namespace SalesSystem
                     }
                     else
                     {
-                        txtImgUser1.ImageUrl = "https://i.pinimg.com/originals/97/ea/a6/97eaa682491355a6c6b2ad3c7f086a3a.jpg";
+                        txtImgUser1.ImageUrl = "https://cdn-icons-png.freepik.com/512/6543/6543634.png";
+
                     }
                 }
 
