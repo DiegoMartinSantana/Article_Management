@@ -7,7 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title>Article Management
+    </title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -50,7 +51,7 @@
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container-fluid " style="font-size: x-large">
-                <img class="navbar-brand" style="width: 50px" src="https://i.pinimg.com/564x/77/e5/0c/77e50c04f9f512a456eb3e135a1c013b.jpg" alt="ShopIcon" />
+                <img class="navbar-brand" style="width: 50px; border-radius: 10px" src="https://i.pinimg.com/564x/77/e5/0c/77e50c04f9f512a456eb3e135a1c013b.jpg" alt="ShopIcon" />
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -90,8 +91,17 @@
             </div>
             <div class="container-fluid">
                 <div style="margin-left: 33%">
-                    <h1 style="color: lightgray" class="navbar-text">Sales System</h1>
+                    <%if (Security.Validation.IsAdmin(Session["user"]))
+                        {
+                    %>
+                    <h1 style="color: lightgray" class="navbar-text">Article Managament</h1>
 
+                    <%}
+                        else
+                        {  %>
+                    <h1 style="color: lightgray" class="navbar-text">Shop</h1>
+
+                    <%} %>
                 </div>
             </div>
 
@@ -105,7 +115,7 @@
                             {
                                 //redirect to "profile"
                         %>
-                        <a href="Register.aspx" style="font-size: x-large; " class="btn btn-outline-primary me-2">My Profile</a>
+                        <a href="Register.aspx" style="font-size: x-large;" class="btn btn-outline-primary me-2">My Profile</a>
 
                         <%}
                             else
@@ -122,8 +132,8 @@
 
 
                         <%}
-                        else
-                        {  %>
+                            else
+                            {  %>
                         <asp:Button Text="Logout" ID="btnlogout" Style="font-size: x-large" runat="server" OnClick="btnlogout_Click" CssClass="btn btn-outline-danger" />
 
                         <% } %>
