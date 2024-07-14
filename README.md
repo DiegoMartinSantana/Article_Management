@@ -31,7 +31,7 @@ Perfil
 - Visualización y edición de datos personales.
 
 Funciones de Administrador
-Si posees permisos de administrador, podrás:
+
 
 - Visualizar todos los artículos y su información.
 - Dar de alta nuevos artículos.
@@ -48,7 +48,20 @@ Si posees permisos de administrador, podrás:
 - Validaciones lógicas diversas.
 - Contacto vía email (SMTP).
 - Recuperación de contraseña (utilizando una API de generación de código de RapidAPI).
-- 
+
+## PRUEBAS
+- Usuario
+
+  
+  user@user.com 
+
+  pass : user
+- Admin
+
+  
+  admin@admin.com
+
+  pass : admin
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://online.publuu.com/585442/1313556)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/diegosantanadev-net/)
